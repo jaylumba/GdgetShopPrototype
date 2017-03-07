@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import jcl.com.gadgetshop.R;
 import jcl.com.gadgetshop.base.BaseFragment;
 import jcl.com.gadgetshop.data.dao.Product;
+import jcl.com.gadgetshop.enums.PRODUCT_CATEGORY;
 
 /**
  * Created by Gilbert Pareno on 22/11/2016.
@@ -22,19 +23,19 @@ import jcl.com.gadgetshop.data.dao.Product;
 public class ProductFragment extends BaseFragment {
 
 
-    private ArrayList<Product> students;
+    private ArrayList<Product> products;
     private View dialogView;
 
-    private boolean isMale;
+    private PRODUCT_CATEGORY productCategory;
 
 
     @SuppressLint("ValidFragment")
     protected ProductFragment() {
     }
 
-    public static ProductFragment newInstance(boolean isMale) {
+    public static ProductFragment newInstance(PRODUCT_CATEGORY productCategory) {
         ProductFragment fragment = new ProductFragment();
-        fragment.isMale = isMale;
+        fragment.productCategory = productCategory;
         return fragment;
     }
 
@@ -54,7 +55,4 @@ public class ProductFragment extends BaseFragment {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
     }
-
-
-
 }
