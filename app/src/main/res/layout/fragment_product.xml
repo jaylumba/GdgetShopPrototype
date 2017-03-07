@@ -3,12 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_desc"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_products"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Product"
-        android:textSize="@dimen/fontsize_title" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>

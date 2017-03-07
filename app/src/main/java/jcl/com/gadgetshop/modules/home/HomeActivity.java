@@ -1,14 +1,21 @@
 package jcl.com.gadgetshop.modules.home;
 
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -74,6 +81,36 @@ public class HomeActivity extends BaseActivity implements HomeMvp.View{
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.cart, menu);
+
+        //Change icon color to white
+        for (int i = 0; i < menu.size(); i++) {
+            Drawable drawable = menu.getItem(i).getIcon();
+            if (drawable != null) {
+                drawable.mutate();
+                drawable.setColorFilter(getResources().getColor(android.R.color.white), PorterDuff.Mode.SRC_ATOP);
+            }
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_item_cart:
+                showToast("Display Cart");
+                break;
+            default:
+                break;
+        }
+        return false;
+    }
+
+    @Override
     public void initToolbarAndDrawer() {
         setSupportActionBar(toolbar);
         toolbar.setTitle(getStringFromResource(R.id.nav_tablet));
@@ -98,6 +135,8 @@ public class HomeActivity extends BaseActivity implements HomeMvp.View{
         tvName = ButterKnife.findById(header, R.id.tv_name);
         ivProfilePic = ButterKnife.findById(header, R.id.iv_profile_pic);
     }
+
+
 
     @Override
     public void displayNameAndProfilePicture(User user) {

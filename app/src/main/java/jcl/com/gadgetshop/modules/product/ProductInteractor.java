@@ -20,5 +20,6 @@ public class ProductInteractor implements ProductMvp.Interactor {
     @Override
     public void retrieveProducts(PRODUCT_CATEGORY productCategory) {
         ArrayList<Product> products = new ArrayList<>();
+        presenter.displayProducts(products);
     }
 }

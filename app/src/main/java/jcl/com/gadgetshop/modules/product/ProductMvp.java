@@ -20,6 +20,7 @@ public class ProductMvp {
     }
 
     interface Presenter extends BaseMvp.Presenter{
+        void retrieveProducts(PRODUCT_CATEGORY productCategory);
         void displayProducts(ArrayList<Product> products);
     }
 }
