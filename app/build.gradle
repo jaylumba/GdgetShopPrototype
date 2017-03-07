@@ -83,6 +83,7 @@ dependencies {
     //SCALABLE DP
     compile 'com.intuit.sdp:sdp-android:1.0.3'
 
+    compile 'cyd.awesome.android:awesome-material:1.0'
     //ProgressLayout
 //    compile 'com.github.nguyenhoanglam:ProgressLayout:1.0.1'
 

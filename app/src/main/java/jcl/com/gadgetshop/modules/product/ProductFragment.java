@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -53,9 +55,6 @@ public class ProductFragment extends BaseFragment implements ProductMvp.View{
 
         mPresenter = new ProductPresenter(this);
         mPresenter.retrieveProducts(productCategory);
-//        if (productCategory == PRODUCT_CATEGORY.PHONES) tvDesc.setText("Phones");
-//        else if (productCategory == PRODUCT_CATEGORY.TABLET) tvDesc.setText("Tablets");
-//        else tvDesc.setText("Phones and Tablet");
 
         return view;
     }
@@ -68,10 +67,12 @@ public class ProductFragment extends BaseFragment implements ProductMvp.View{
 
 
     @Override
-    public void displayProducts(ArrayList<Product> products) {
-        LinearLayoutManager lm = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL,false);
-        rv_products.setLayoutManager(lm);
-        rv_products.setItemAnimator(new DefaultItemAnimator());
-        rv_products.setAdapter(new ProductAdapter(products, addToCartClick,callback));
+    public void displayProducts(List<Product> products) {
+        if (products != null){
+            GridLayoutManager lm = new GridLayoutManager(getActivity(), 2);
+            rv_products.setLayoutManager(lm);
+            rv_products.setItemAnimator(new DefaultItemAnimator());
+            rv_products.setAdapter(new ProductAdapter(products, addToCartClick,callback));
+        }
     }
 }

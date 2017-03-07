@@ -1,8 +1,11 @@
 package jcl.com.gadgetshop.modules.product;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import jcl.com.gadgetshop.data.DataManager;
 import jcl.com.gadgetshop.data.dao.Product;
+import jcl.com.gadgetshop.data.dao.ProductDao;
 import jcl.com.gadgetshop.enums.PRODUCT_CATEGORY;
 
 /**
@@ -19,7 +22,11 @@ public class ProductInteractor implements ProductMvp.Interactor {
 
     @Override
     public void retrieveProducts(PRODUCT_CATEGORY productCategory) {
-        ArrayList<Product> products = new ArrayList<>();
+        List<Product> products;
+        ProductDao dao = DataManager.getInstance().getDbHelper().newSession().getProductDao();
+        products = dao.queryBuilder()
+                .where(ProductDao.Properties.Category.eq(productCategory.toString()))
+                .list();
         presenter.displayProducts(products);
     }
 }

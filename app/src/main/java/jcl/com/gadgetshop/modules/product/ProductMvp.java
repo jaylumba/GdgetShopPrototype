@@ -1,6 +1,7 @@
 package jcl.com.gadgetshop.modules.product;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import jcl.com.gadgetshop.base.BaseMvp;
 import jcl.com.gadgetshop.data.dao.Product;
@@ -16,11 +17,11 @@ public class ProductMvp {
     }
 
     interface View extends BaseMvp.View{
-        void displayProducts(ArrayList<Product> products);
+        void displayProducts(List<Product> products);
     }
 
     interface Presenter extends BaseMvp.Presenter{
         void retrieveProducts(PRODUCT_CATEGORY productCategory);
-        void displayProducts(ArrayList<Product> products);
+        void displayProducts(List<Product> products);
     }
 }

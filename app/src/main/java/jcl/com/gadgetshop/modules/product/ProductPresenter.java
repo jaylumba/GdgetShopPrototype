@@ -1,6 +1,7 @@
 package jcl.com.gadgetshop.modules.product;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import jcl.com.gadgetshop.base.BasePresenter;
 import jcl.com.gadgetshop.data.dao.Product;
@@ -27,7 +28,7 @@ public class ProductPresenter extends BasePresenter implements ProductMvp.Presen
     }
 
     @Override
-    public void displayProducts(ArrayList<Product> products) {
+    public void displayProducts(List<Product> products) {
         mView.displayProducts(products);
     }
 }

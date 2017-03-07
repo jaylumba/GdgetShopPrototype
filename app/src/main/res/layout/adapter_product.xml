@@ -1,51 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/root_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="@dimen/spacing_base"
-    android:orientation="vertical"
-    android:padding="@dimen/spacing_base">
+    android:layout_height="wrap_content"
+    android:elevation="@dimen/_1sdp">
 
-    <ImageView
-        android:id="@+id/iv_product"
-        android:layout_width="@dimen/_100sdp"
-        android:layout_height="@dimen/_100sdp"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="@dimen/spacing_base"
-        tools:src="@drawable/prod_apple_iphone_6s" />
-
-    <TextView
-        android:id="@+id/tv_product_name"
-        fontPath="fonts/Montserrat-Bold.otf"
+    <RelativeLayout
+        android:id="@+id/root_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/iv_product"
-        android:gravity="center"
-        android:padding="@dimen/spacing_base"
-        android:textSize="@dimen/fontsize_title"
-        tools:ignore="MissingPrefix"
-        tools:text="Iphone 6s" />
+        android:padding="@dimen/spacing_base2x">
 
-    <TextView
-        android:id="@+id/tv_product_price"
-        fontPath="fonts/OpenSans-Semibold.ttf"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_product_name"
-        android:gravity="center"
-        android:padding="@dimen/spacing_base"
-        android:textSize="@dimen/fontsize_subheading"
-        tools:ignore="MissingPrefix"
-        tools:text="&#8369; 29,999" />
+        <ImageView
+            android:id="@+id/iv_product"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitCenter"
+            android:layout_margin="@dimen/spacing_base"
+            tools:src="@drawable/prod_apple_iphone_6s" />
 
-    <Button
-        android:id="@+id/btn_add"
-        style="@style/AppTheme.ButtonStyle.Light"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_product_price"
-        android:text="Add to Cart" />
+        <TextView
+            android:id="@+id/tv_product_name"
+            fontPath="fonts/Montserrat-Bold.otf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_product"
+            android:gravity="center"
+            android:padding="@dimen/spacing_base"
+            android:textSize="@dimen/fontsize_title"
+            tools:ignore="MissingPrefix"
+            tools:text="Iphone 6s" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/tv_product_price"
+            fontPath="fonts/OpenSans-Semibold.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_product_name"
+            android:gravity="center"
+            android:padding="@dimen/spacing_base"
+            android:textSize="@dimen/fontsize_subheading"
+            tools:ignore="MissingPrefix"
+            tools:text="&#8369; 29,999" />
+
+        <Button
+            android:id="@+id/btn_add"
+            style="@style/AppTheme.ButtonStyle.Light"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_product_price"
+            android:drawableLeft="@drawable/ic_cart_plus"
+            android:drawablePadding="@dimen/spacing_base"
+            android:drawableStart="@drawable/ic_cart_plus"
+            android:text="Add to Cart" />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
