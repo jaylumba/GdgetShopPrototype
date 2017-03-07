@@ -12,8 +12,7 @@
         android:layout_width="@dimen/_60sdp"
         android:layout_height="@dimen/_60sdp"
         android:layout_margin="@dimen/spacing_base2x"
-        android:layout_centerVertical="true"
-        app:srcCompat="@drawable/sample_profile_pic" />
+        android:layout_centerVertical="true" />
 
     <TextView
         android:id="@+id/tv_welcome"
@@ -36,7 +35,7 @@
         android:layout_below="@+id/tv_welcome"
         fontPath="fonts/Montserrat-Bold.otf"
         android:textSize="@dimen/fontsize_subheading"
-        android:text="Jay Anthony Lumba"
+        android:text="Name"
         android:textColor="@color/colorPrimary"
         tools:ignore="MissingPrefix" />
 

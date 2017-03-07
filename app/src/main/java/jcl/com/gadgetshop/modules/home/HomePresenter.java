@@ -17,8 +17,12 @@ public class HomePresenter extends BasePresenter implements HomeMvp.Presenter{
     }
 
     @Override
-    public void onLoad(User user) {
+    public void onLoad() {
         mView.initToolbarAndDrawer();
+    }
+
+    @Override
+    public void displayNameAndProfilePicture(User user) {
         mView.displayNameAndProfilePicture(user);
     }
 

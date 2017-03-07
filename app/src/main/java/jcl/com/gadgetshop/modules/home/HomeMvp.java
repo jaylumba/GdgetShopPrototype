@@ -18,7 +18,8 @@ public class HomeMvp {
     }
 
     interface Presenter extends BaseMvp.Presenter{
-        void onLoad(User user);
+        void onLoad();
+        void displayNameAndProfilePicture(User user);
         void onNavTabletClicked();
         void onNavMobilePhoneClicked();
         void onNavLogoutClicked();

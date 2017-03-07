@@ -28,6 +28,7 @@ import jcl.com.gadgetshop.events.LoginSuccessEvent;
 import jcl.com.gadgetshop.modules.login.LoginActivity;
 import jcl.com.gadgetshop.modules.product.ProductFragment;
 import jcl.com.gadgetshop.sinlgetons.PicassoSingleton;
+import jcl.com.gadgetshop.transforms.CircleTransform;
 
 public class HomeActivity extends BaseActivity implements HomeMvp.View{
 
@@ -49,8 +50,9 @@ public class HomeActivity extends BaseActivity implements HomeMvp.View{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
-        EventBus.getDefault().register(this);
         presenter = new HomePresenter(this);
+        presenter.onLoad();
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -99,8 +101,16 @@ public class HomeActivity extends BaseActivity implements HomeMvp.View{
 
     @Override
     public void displayNameAndProfilePicture(User user) {
+        int picId;
         tvName.setText(user.getName());
-        PicassoSingleton.getInstance().getPicasso().load(R.drawable.sample_profile_pic).into(ivProfilePic);
+        if (user.getEmail().equals("jay@gmail.com")) picId = R.drawable.sample_profile_pic;
+        else picId = R.drawable.ic_gadgetshop_logo;
+        PicassoSingleton.getInstance().getPicasso()
+                .load(picId)
+                .fit()
+                .transform(new CircleTransform())
+                .placeholder(R.drawable.ic_gadgetshop_logo)
+                .into(ivProfilePic);
     }
 
     @Override
@@ -123,7 +133,7 @@ public class HomeActivity extends BaseActivity implements HomeMvp.View{
     public void onLoginSuccess(LoginSuccessEvent loginSuccessEvent){
         user = loginSuccessEvent.getUser();
         EventBus.getDefault().removeStickyEvent(loginSuccessEvent);
-        presenter.onLoad(user);
+        presenter.displayNameAndProfilePicture(user);
     }
 
     private void setFragment(final BaseFragment fragment) {
