@@ -8,21 +8,17 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-import org.w3c.dom.Text;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -113,7 +109,7 @@ public class HomeActivity extends BaseActivity implements HomeMvp.View{
     @Override
     public void initToolbarAndDrawer() {
         setSupportActionBar(toolbar);
-        toolbar.setTitle(getStringFromResource(R.id.nav_tablet));
+        toolbar.setTitle(getStringFromResource(R.id.nav_cellphone));
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.app_name, R.string.app_name) {
             @Override
             public void onDrawerOpened(View drawerView) {
@@ -129,7 +125,7 @@ public class HomeActivity extends BaseActivity implements HomeMvp.View{
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
         navView.setNavigationItemSelectedListener(new DrawerItemClickListener());
-        navView.getMenu().performIdentifierAction(R.id.nav_tablet, 0);
+        navView.getMenu().performIdentifierAction(R.id.nav_cellphone, 0);
 
         View header = navView.getHeaderView(0);
         tvName = ButterKnife.findById(header, R.id.tv_name);
@@ -189,12 +185,12 @@ public class HomeActivity extends BaseActivity implements HomeMvp.View{
             if (!item.isChecked() && item.getItemId() != R.id.nav_logout) {
                 item.setChecked(true);
                 switch (item.getItemId()) {
+                    case R.id.nav_cellphone:
+                        presenter.onNavMobilePhoneClicked();
+                        break;
 
                     case R.id.nav_tablet:
                         presenter.onNavTabletClicked();
-                        break;
-                    case R.id.nav_cellphone:
-                        presenter.onNavMobilePhoneClicked();
                         break;
                 }
             } else if (item.getItemId() == R.id.nav_logout) {

@@ -11,12 +11,12 @@ import org.greenrobot.greendao.annotation.Generated;
 
 @Entity
 public class ShippingInfo {
-    @Id long id;
+    @Id(autoincrement = true) Long id;
     @Property String shipTo;
     @Property String address;
     @Property String contactNo;
-    @Generated(hash = 1524260018)
-    public ShippingInfo(long id, String shipTo, String address, String contactNo) {
+    @Generated(hash = 430862797)
+    public ShippingInfo(Long id, String shipTo, String address, String contactNo) {
         this.id = id;
         this.shipTo = shipTo;
         this.address = address;
@@ -25,10 +25,10 @@ public class ShippingInfo {
     @Generated(hash = 1362188477)
     public ShippingInfo() {
     }
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getShipTo() {

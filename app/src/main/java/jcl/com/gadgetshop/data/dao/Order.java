@@ -4,7 +4,6 @@ import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Property;
 
-import java.util.ArrayList;
 import java.util.Date;
 import org.greenrobot.greendao.annotation.Generated;
 
@@ -15,15 +14,15 @@ import org.greenrobot.greendao.annotation.Generated;
 @Entity
 public class Order {
 
-    @Id long id;
-    @Property long userId;
-    @Property long shippingInfo;
-    @Property long paymentInfoId;
+    @Id(autoincrement = true) Long id;
+    @Property Long userId;
+    @Property Long shippingInfo;
+    @Property Long paymentInfoId;
     @Property double totalPrice;
     @Property Date transactionDate;
     @Property String status;
-    @Generated(hash = 362458431)
-    public Order(long id, long userId, long shippingInfo, long paymentInfoId,
+    @Generated(hash = 861031895)
+    public Order(Long id, Long userId, Long shippingInfo, Long paymentInfoId,
             double totalPrice, Date transactionDate, String status) {
         this.id = id;
         this.userId = userId;
@@ -36,28 +35,28 @@ public class Order {
     @Generated(hash = 1105174599)
     public Order() {
     }
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
-    public long getUserId() {
+    public Long getUserId() {
         return this.userId;
     }
-    public void setUserId(long userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
-    public long getShippingInfo() {
+    public Long getShippingInfo() {
         return this.shippingInfo;
     }
-    public void setShippingInfo(long shippingInfo) {
+    public void setShippingInfo(Long shippingInfo) {
         this.shippingInfo = shippingInfo;
     }
-    public long getPaymentInfoId() {
+    public Long getPaymentInfoId() {
         return this.paymentInfoId;
     }
-    public void setPaymentInfoId(long paymentInfoId) {
+    public void setPaymentInfoId(Long paymentInfoId) {
         this.paymentInfoId = paymentInfoId;
     }
     public double getTotalPrice() {

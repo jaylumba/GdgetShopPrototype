@@ -51,6 +51,13 @@
     <!--<item name="textAllCaps">false</item>-->
     <!--</style>-->
 
+    <style name="AppTheme.ButtonStyle.AddToCart" parent="Widget.AppCompat.Button">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:textSize">@dimen/fontsize_body1</item>
+        <item name="android:padding">@dimen/spacing_base</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="fontPath">fonts/Montserrat-SemiBold.otf</item>
+    </style>
 
     <style name="AppTheme.ButtonStyle" parent="Widget.AppCompat.Button">
         <item name="android:minHeight">0dp</item>
@@ -68,6 +75,9 @@
         <item name="android:background">@drawable/bg_button_dark</item>
     </style>
 
+    <style name="AppTheme.ButtonStyle.AddToCart.Light" parent="AppTheme.ButtonStyle.AddToCart">
+        <item name="android:background">@drawable/bg_button_light_flatop</item>
+    </style>
 
     <style name="AppTheme.ButtonStyle.Fb" parent="AppTheme.ButtonStyle">
         <item name="android:background">@drawable/bg_button_fb</item>

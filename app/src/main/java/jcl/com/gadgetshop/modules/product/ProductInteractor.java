@@ -1,6 +1,5 @@
 package jcl.com.gadgetshop.modules.product;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import jcl.com.gadgetshop.data.DataManager;

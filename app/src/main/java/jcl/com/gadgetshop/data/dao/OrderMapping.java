@@ -1,7 +1,6 @@
 package jcl.com.gadgetshop.data.dao;
 
 import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Property;
 import org.greenrobot.greendao.annotation.Unique;
 import org.greenrobot.greendao.annotation.Generated;
@@ -11,26 +10,27 @@ import org.greenrobot.greendao.annotation.Generated;
  */
 @Entity
 public class OrderMapping {
-    @Unique @Property long orderId;
-    @Unique @Property long orderLineId;
-    @Generated(hash = 522012716)
-    public OrderMapping(long orderId, long orderLineId) {
+    @Unique @Property Long orderId;
+    @Unique @Property Long orderLineId;
+    @Generated(hash = 621030484)
+    public OrderMapping(Long orderId, Long orderLineId) {
         this.orderId = orderId;
         this.orderLineId = orderLineId;
     }
     @Generated(hash = 1825965273)
     public OrderMapping() {
     }
-    public long getOrderId() {
+    public Long getOrderId() {
         return this.orderId;
     }
-    public void setOrderId(long orderId) {
+    public void setOrderId(Long orderId) {
         this.orderId = orderId;
     }
-    public long getOrderLineId() {
+    public Long getOrderLineId() {
         return this.orderLineId;
     }
-    public void setOrderLineId(long orderLineId) {
+    public void setOrderLineId(Long orderLineId) {
         this.orderLineId = orderLineId;
     }
+
 }

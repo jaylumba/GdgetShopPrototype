@@ -10,7 +10,7 @@ import org.greenrobot.greendao.annotation.Generated;
  */
 @Entity
 public class Product {
-    @Id long id;
+    @Id(autoincrement = true) Long id;
     @Property int picResId;
     @Property String name;
     @Property double price;
@@ -23,8 +23,8 @@ public class Product {
     @Property String ram;
     @Property String battery;
     @Property String category;
-    @Generated(hash = 627124970)
-    public Product(long id, int picResId, String name, double price,
+    @Generated(hash = 912444307)
+    public Product(Long id, int picResId, String name, double price,
             String dateRelease, String weight, String os, String storage,
             String display, String camera, String ram, String battery,
             String category) {
@@ -45,10 +45,10 @@ public class Product {
     @Generated(hash = 1890278724)
     public Product() {
     }
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public int getPicResId() {
@@ -123,7 +123,4 @@ public class Product {
     public void setCategory(String category) {
         this.category = category;
     }
-
-
-    
 }

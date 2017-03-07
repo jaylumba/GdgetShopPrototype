@@ -3,6 +3,7 @@
     <color name="colorPrimary">#364a55</color>
     <color name="colorPrimaryAlpha">#66364a55</color>
     <color name="colorPrimaryDark">#2b3942</color>
+    <color name="colorPrimaryDarkAlpha">#66000000</color>
     <color name="colorAccent">#16c9e9</color>
 
     <color name="colorNavDrawer">#1f282d</color>
@@ -37,4 +38,5 @@
 
     <color name="colorWhite">#FFF</color>
     <color name="colorBlack">#000</color>
+    <color name="colorRecyclerBg">#ecedf1</color>
 </resources>

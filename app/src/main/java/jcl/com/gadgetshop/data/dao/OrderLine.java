@@ -12,11 +12,11 @@ import org.greenrobot.greendao.annotation.Generated;
 @Entity
 public class OrderLine {
 
-    @Id long id;
-    @Property long productId;
+    @Id(autoincrement = true) Long id;
+    @Property Long productId;
     @Property int quantity;
-    @Generated(hash = 2143438341)
-    public OrderLine(long id, long productId, int quantity) {
+    @Generated(hash = 549427702)
+    public OrderLine(Long id, Long productId, int quantity) {
         this.id = id;
         this.productId = productId;
         this.quantity = quantity;
@@ -24,16 +24,16 @@ public class OrderLine {
     @Generated(hash = 1925626461)
     public OrderLine() {
     }
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
-    public long getProductId() {
+    public Long getProductId() {
         return this.productId;
     }
-    public void setProductId(long productId) {
+    public void setProductId(Long productId) {
         this.productId = productId;
     }
     public int getQuantity() {
@@ -42,5 +42,4 @@ public class OrderLine {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-
 }

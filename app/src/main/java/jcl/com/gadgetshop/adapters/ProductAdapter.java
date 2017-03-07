@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
 
 import butterknife.BindView;
@@ -19,7 +21,6 @@ import jcl.com.gadgetshop.callbacks.OnAddToCartClick;
 import jcl.com.gadgetshop.callbacks.OnListItemClick;
 import jcl.com.gadgetshop.data.dao.Product;
 import jcl.com.gadgetshop.sinlgetons.PicassoSingleton;
-import jcl.com.gadgetshop.transforms.CircleTransform;
 
 /**
  * Created by jayanthony.lumba on 3/7/2017.
@@ -72,13 +73,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductA
 
             PicassoSingleton.getInstance().getPicasso()
                     .load(currentItem.getPicResId())
-                    .fit()
-                    .transform(new CircleTransform())
                     .placeholder(R.drawable.ic_gadgetshop_logo)
                     .into(holder.ivProduct);
 
             holder.tvProductName.setText(currentItem.getName());
-            holder.tvProductPrice.setText(String.valueOf(currentItem.getPrice()));
+            NumberFormat formatter = new DecimalFormat("#,###.00");
+            holder.tvProductPrice.setText("₱" + formatter.format(currentItem.getPrice()));
             holder.btnAdd.setOnClickListener(view -> {
                 onAddToCartClick.onAdd(currentItem);
             });

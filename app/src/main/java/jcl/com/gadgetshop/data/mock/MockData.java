@@ -21,71 +21,136 @@ public class MockData {
             createUser("test2@gmail.com", "pass", "Test Account 2");
 
             //Products
-            createProduct(R.drawable.prod_apple_iphone_se
-                    , "APPLE IPhone SE"
-                    , 19900
+            createProduct(R.drawable.img_prod_iphone_5
+                    , "Apple iPhone 5" //name
+                    , 12490 //price
+                    , "Released 2012, September" //dateRelease
+                    , "112g, 7.6mm thickness" //weight
+                    , "iOS 6, up to iOS 10.2" //os
+                    , "16GB storage, no card slot" //storage
+                    , "4.0\" (640x1136 pixels)" //display
+                    , "8MP (1080p)" //camera
+                    , "1GB RAM (Apple A6)" //ram
+                    , "1440mAh (Li-Po)" //battery
+                    , PRODUCT_CATEGORY.PHONES.toString());
+
+            createProduct(R.drawable.img_prod_iphone_5s
+                    , "Apple iPhone 5s" //name
+                    , 145000 //price
+                    , "Released 2013, September" //dateRelease
+                    , "112g, 7.6mm thickness" //weight
+                    , "iOS 7, up to iOS 10.2" //os
+                    , "32GB storage, no card slot" //storage
+                    , "4.0\" (640x1136 pixels)" //display
+                    , "8MP (1080p)" //camera
+                    , "1GB RAM (Apple A7)" //ram
+                    , "1560mAh (Li-Po)" //battery
+                    , PRODUCT_CATEGORY.PHONES.toString());
+
+
+            createProduct(R.drawable.img_prod_iphone_se
+                    , "Apple iPhone SE"
+                    , 14900
                     , "Released 2016, March"
                     , "113g, 7.6mm thickness"
                     , "iOS 9.3.2, up to iOS 10.2"
-                    , "16/64GB storage, no card slot"
+                    , "16GB storage, no card slot"
                     , "4.0\" (640x1136 pixels)"
                     , "12MP (2160p)"
                     , "2GB RAM (Apple A9)"
                     , "1624mAh (Li-Po)"
                     , PRODUCT_CATEGORY.PHONES.toString());
 
-            createProduct(R.drawable.prod_apple_iphone_se
-                    , "APPLE IPhone SE"
-                    , 19900
-                    , "Released 2016, March"
-                    , "113g, 7.6mm thickness"
-                    , "iOS 9.3.2, up to iOS 10.2"
-                    , "16/64GB storage, no card slot"
-                    , "4.0\" (640x1136 pixels)"
-                    , "12MP (2160p)"
-                    , "2GB RAM (Apple A9)"
-                    , "1624mAh (Li-Po)"
+            createProduct(R.drawable.img_prod_iphone_6s
+                    , "Apple iPhone 6s" //name
+                    , 27000 //price
+                    , "Released 2015, September" //dateRelease
+                    , "143g, 7.1mm thickness" //weight
+                    , "iOS 9, up to iOS 10.2" //os
+                    , "64GB storage, no card slot" //storage
+                    , "4.7\" (750x1334 pixels)" //display
+                    , "12MP (160p)" //camera
+                    , "2GB RAM (Apple A9)" //ram
+                    , "1715mAh (Li-Ion)" //battery
                     , PRODUCT_CATEGORY.PHONES.toString());
 
-            //Not actual
-            createProduct(R.drawable.prod_iphone_6
-                    , "APPLE IPhone 6"
-                    , 21800
-                    , "Released 2014, September"
-                    , "113g, 7.6mm thickness"
-                    , "iOS 9.3.2, up to iOS 10.2"
-                    , "16/64GB storage, no card slot"
-                    , "4.0\" (640x1136 pixels)"
-                    , "12MP (2160p)"
-                    , "2GB RAM (Apple A9)"
-                    , "1624mAh (Li-Po)"
+            createProduct(R.drawable.img_prod_iphone_6s_plus
+                    , "Apple iPhone 6s Plus" //name
+                    , 24900 //price
+                    , "Released 2015, September" //dateRelease
+                    , "192g, 7.3mm thickness" //weight
+                    , "iOS 9, up to iOS 10.2" //os
+                    , "64GB storage, no card slot" //storage
+                    , "5.5\" (1080x1920 pixels)" //display
+                    , "12MP (2160p)" //camera
+                    , "2GB RAM (Apple A9)" //ram
+                    , "2750mAh (Li-Ion)" //battery
                     , PRODUCT_CATEGORY.PHONES.toString());
 
-            createProduct(R.drawable.prod_apple_iphone_6s
-                    , "APPLE IPhone 6s"
-                    , 21800
-                    , "Released 2014, September"
-                    , "113g, 7.6mm thickness"
-                    , "iOS 9.3.2, up to iOS 10.2"
-                    , "16/64GB storage, no card slot"
-                    , "4.0\" (640x1136 pixels)"
-                    , "12MP (2160p)"
-                    , "2GB RAM (Apple A9)"
-                    , "1624mAh (Li-Po)"
+            createProduct(R.drawable.img_prod_iphone_7
+                    , "Apple iPhone 7" //name
+                    , 27500 //price
+                    , "Released 2016, September" //dateRelease
+                    , "138g, 7.1mm thickness" //weight
+                    , "iOS 10.0.1, up to iOS 10.2" //os
+                    , "128GB storage, no card slot" //storage
+                    , "4.7\" (750x1334 pixels)" //display
+                    , "12MP (2160p)" //camera
+                    , "2GB RAM (Apple A10 Fusion)" //ram
+                    , "1960mAh (Li-Ion)" //battery
                     , PRODUCT_CATEGORY.PHONES.toString());
 
-            createProduct(R.drawable.prod_apple_iphone_7
-                    , "APPLE IPhone 7"
-                    , 21800
-                    , "Released 2014, September"
-                    , "113g, 7.6mm thickness"
-                    , "iOS 9.3.2, up to iOS 10.2"
-                    , "16/64GB storage, no card slot"
-                    , "4.0\" (640x1136 pixels)"
-                    , "12MP (2160p)"
-                    , "2GB RAM (Apple A9)"
-                    , "1624mAh (Li-Po)"
-                    , PRODUCT_CATEGORY.PHONES.toString());
+            createProduct(R.drawable.img_prod_ipad_air_2
+                    , "Apple iPad Air 2" //name
+                    , 23200 //price
+                    , "Released 2014, October" //dateRelease
+                    , "437g (Wi-Fi) / 444g (3G/LTE), 6.1mm thickness" //weight
+                    , "iOS 8.1, up to iOS 10.2" //os
+                    , "64GB storage, no card slot" //storage
+                    , "9.7\" (1536x2048 pixels)" //display
+                    , "8MP (1080p)" //camera
+                    , "2GB RAM (Apple A8X)" //ram
+                    , "7340mAh (Li-Po)" //battery
+                    , PRODUCT_CATEGORY.TABLET.toString());
+
+            createProduct(R.drawable.img_prod_apple_ipad_pro
+                    , "Apple iPad Pro" //name
+                    , 33200 //price
+                    , "Released 2015, November" //dateRelease
+                    , "713g (Wi-Fi) / 723g (LTE), 6.9mm thickness" //weight
+                    , "iOS 9, up to iOS 10.2" //os
+                    , "32/128/256GB storage, no card slot" //storage
+                    , "12.9\" ((2048x2732 pixels)" //display
+                    , "8MP (1080p)" //camera
+                    , "4GB RAM (Apple A9X)" //ram
+                    , "10307mAh (Li-Ion)" //battery
+                    , PRODUCT_CATEGORY.TABLET.toString());
+
+            createProduct(R.drawable.img_prod_apple_ipad_mini_4
+                    , "Apple iPad mini 4" //name
+                    , 25000 //price
+                    , "Released 2015, September" //dateRelease
+                    , "299g (Wi-Fi) / 304g (3G/LTE), 6.1mm thickness" //weight
+                    , "iOS 9, up to iOS 10.2" //os
+                    , "128GB storage, no card slot" //storage
+                    , "7.9\" (1536x2048 pixels)" //display
+                    , "8MP (1080p)" //camera
+                    , "2GB RAM (Apple A8)" //ram
+                    , "5124mAh (Li-Ion)" //battery
+                    , PRODUCT_CATEGORY.TABLET.toString());
+
+            createProduct(R.drawable.img_prod_apple_ipad_mini_3
+                    , "Apple iPad mini 3" //name
+                    , 15990 //price
+                    , "Released 2014, October" //dateRelease
+                    , "331g (Wi-Fi) / 341g (3G/LTE), 7.5mm thickness" //weight
+                    , "iOS 8.1, up to iOS 10.2" //os
+                    , "128GB storage, no card slot" //storage
+                    , "7.9\" (1536x2048 pixels)" //display
+                    , "5MP (1080p)" //camera
+                    , "1GB RAM (Apple A7)" //ram
+                    , "6470mAh (Li-Po)" //battery
+                    , PRODUCT_CATEGORY.TABLET.toString());
 
             DataManager.getInstance().getSharedPrefHelper().saveFirstLaunched(false);
         }
@@ -117,7 +182,7 @@ public class MockData {
         product.setRam(ram);
         product.setBattery(battery);
         product.setCategory(category);
-        productDao.insertOrReplace(product);
+        productDao.insert(product);
     }
 
 }

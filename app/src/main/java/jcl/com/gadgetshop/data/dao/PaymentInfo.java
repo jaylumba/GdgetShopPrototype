@@ -10,13 +10,13 @@ import org.greenrobot.greendao.annotation.Generated;
  */
 @Entity
 public class PaymentInfo {
-    @Id long id;
+    @Id(autoincrement = true) Long id;
     @Property String cardHoldersName;
     @Property String cardNumber;
     @Property String expriryDate;
     @Property String cvv;
-    @Generated(hash = 1744553727)
-    public PaymentInfo(long id, String cardHoldersName, String cardNumber,
+    @Generated(hash = 842179791)
+    public PaymentInfo(Long id, String cardHoldersName, String cardNumber,
             String expriryDate, String cvv) {
         this.id = id;
         this.cardHoldersName = cardHoldersName;
@@ -27,10 +27,10 @@ public class PaymentInfo {
     @Generated(hash = 1812234567)
     public PaymentInfo() {
     }
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getCardHoldersName() {
@@ -57,4 +57,5 @@ public class PaymentInfo {
     public void setCvv(String cvv) {
         this.cvv = cvv;
     }
+
 }
