@@ -1,10 +1,13 @@
 package jcl.com.gadgetshop.modules.login;
 
+import org.greenrobot.eventbus.EventBus;
+
 import jcl.com.gadgetshop.data.DataManager;
 import jcl.com.gadgetshop.data.dao.User;
 import jcl.com.gadgetshop.data.dao.UserDao;
 import jcl.com.gadgetshop.data.local.DbHelper;
 import jcl.com.gadgetshop.data.local.SharedPrefHelper;
+import jcl.com.gadgetshop.events.LoginSuccessEvent;
 
 /**
  * Created by jayan on 3/5/2017.
@@ -33,12 +36,18 @@ public class LoginInteractor implements LoginMvp.Interactor {
                 UserDao.Properties.Password.eq(password)).unique();
         if (user != null){
             sharedPrefHelper.saveLastUser(email);
-            presenter.requestShowLoginSuccess();
+            postLoginSuccessEvent(new LoginSuccessEvent(user));
             presenter.requestDismissLoading();
         }else{
             presenter.requestShowInvalidLoginError();
             presenter.requestDismissLoading();
         }
+    }
+
+    @Override
+    public void postLoginSuccessEvent(LoginSuccessEvent loginSuccessEvent) {
+        EventBus.getDefault().postSticky(loginSuccessEvent);
+        presenter.requestShowLoginSuccess();
     }
 
 }

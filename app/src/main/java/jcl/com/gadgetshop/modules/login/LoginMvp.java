@@ -1,6 +1,7 @@
 package jcl.com.gadgetshop.modules.login;
 
 import jcl.com.gadgetshop.base.BaseMvp;
+import jcl.com.gadgetshop.events.LoginSuccessEvent;
 
 /**
  * Created by jayan on 3/5/2017.
@@ -11,6 +12,7 @@ public interface LoginMvp {
     interface Interactor{
         void retrieveLastUser();
         void authenticateUser(String email, String password);
+        void postLoginSuccessEvent(LoginSuccessEvent loginSuccessEvent);
     }
 
     interface View extends BaseMvp.View{

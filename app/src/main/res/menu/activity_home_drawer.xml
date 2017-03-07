@@ -4,9 +4,9 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/nav_laptop"
+            android:id="@+id/nav_tablet"
             android:icon="@drawable/ic_menu_laptop"
-            android:title="@string/laptops" />
+            android:title="@string/nav_tablets" />
 
         <item
             android:id="@+id/nav_cellphone"

@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 import jcl.com.gadgetshop.data.DataManager;
 import jcl.com.gadgetshop.data.local.DbHelper;
 import jcl.com.gadgetshop.data.local.SharedPrefHelper;
+import jcl.com.gadgetshop.data.mock.MockData;
 import jcl.com.gadgetshop.sinlgetons.PicassoSingleton;
 import jcl.com.gadgetshop.util.encryption.AesCbcWithIntegrity;
 import okhttp3.Cache;
@@ -87,6 +88,8 @@ public class App extends Application {
         final PicassoSingleton picassoSingleton = PicassoSingleton.getInstance();
         picassoSingleton.initPicasso(this, okHttpClient);
 
+        /** initialize mock data */
+        MockData.initialize();
     }
 
     @Override

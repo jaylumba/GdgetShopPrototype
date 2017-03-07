@@ -1,6 +1,7 @@
 package jcl.com.gadgetshop.modules.home;
 
 import jcl.com.gadgetshop.base.BasePresenter;
+import jcl.com.gadgetshop.data.dao.User;
 
 /**
  * Created by jayanthony.lumba on 3/7/2017.
@@ -16,8 +17,14 @@ public class HomePresenter extends BasePresenter implements HomeMvp.Presenter{
     }
 
     @Override
-    public void onNavLaptopClicked() {
-        mView.showLaptops();
+    public void onLoad(User user) {
+        mView.initToolbarAndDrawer();
+        mView.displayNameAndProfilePicture(user);
+    }
+
+    @Override
+    public void onNavTabletClicked() {
+        mView.showTablets();
     }
 
     @Override

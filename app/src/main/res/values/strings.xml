@@ -15,7 +15,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-    <string name="laptops">LAPTOPS</string>
+    <string name="nav_tablets">TABLETS</string>
     <string name="nav_mobile_phone">MOBILE PHONES</string>
     <string name="nav_logout">LOGOUT</string>
 

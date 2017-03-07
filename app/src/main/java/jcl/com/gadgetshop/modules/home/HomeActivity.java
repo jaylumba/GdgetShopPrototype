@@ -9,15 +9,25 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+import org.w3c.dom.Text;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import jcl.com.gadgetshop.R;
 import jcl.com.gadgetshop.base.BaseActivity;
 import jcl.com.gadgetshop.base.BaseFragment;
+import jcl.com.gadgetshop.data.dao.User;
 import jcl.com.gadgetshop.enums.PRODUCT_CATEGORY;
+import jcl.com.gadgetshop.events.LoginSuccessEvent;
 import jcl.com.gadgetshop.modules.login.LoginActivity;
 import jcl.com.gadgetshop.modules.product.ProductFragment;
+import jcl.com.gadgetshop.sinlgetons.PicassoSingleton;
 
 public class HomeActivity extends BaseActivity implements HomeMvp.View{
 
@@ -27,20 +37,20 @@ public class HomeActivity extends BaseActivity implements HomeMvp.View{
     NavigationView navView;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
+    //Views from navigation view
+    ImageView ivProfilePic;
+    TextView tvName;
 
     private ActionBarDrawerToggle drawerToggle;
     private HomeMvp.Presenter presenter;
-
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
-
+        EventBus.getDefault().register(this);
         presenter = new HomePresenter(this);
-        setSupportActionBar(toolbar);
-        initializeDrawer();
-
     }
 
     @Override
@@ -55,13 +65,16 @@ public class HomeActivity extends BaseActivity implements HomeMvp.View{
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        EventBus.getDefault().unregister(this);
         //Release listener resources
         drawerLayout.removeDrawerListener(drawerToggle);
         drawerToggle = null;
     }
 
-    private void initializeDrawer() {
-        toolbar.setTitle(getStringFromResource(R.id.nav_laptop));
+    @Override
+    public void initToolbarAndDrawer() {
+        setSupportActionBar(toolbar);
+        toolbar.setTitle(getStringFromResource(R.id.nav_tablet));
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.app_name, R.string.app_name) {
             @Override
             public void onDrawerOpened(View drawerView) {
@@ -77,29 +90,46 @@ public class HomeActivity extends BaseActivity implements HomeMvp.View{
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
         navView.setNavigationItemSelectedListener(new DrawerItemClickListener());
-        navView.getMenu().performIdentifierAction(R.id.nav_laptop, 0);
-    }
+        navView.getMenu().performIdentifierAction(R.id.nav_tablet, 0);
 
-    private void setFragment(final BaseFragment fragment) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.content_home, fragment);
-        transaction.commit();
+        View header = navView.getHeaderView(0);
+        tvName = ButterKnife.findById(header, R.id.tv_name);
+        ivProfilePic = ButterKnife.findById(header, R.id.iv_profile_pic);
     }
 
     @Override
-    public void showLaptops() {
-        setFragment(ProductFragment.newInstance(PRODUCT_CATEGORY.LAPTOP));
+    public void displayNameAndProfilePicture(User user) {
+        tvName.setText(user.getName());
+        PicassoSingleton.getInstance().getPicasso().load(R.drawable.sample_profile_pic).into(ivProfilePic);
+    }
+
+    @Override
+    public void showTablets() {
+        setFragment(ProductFragment.newInstance(PRODUCT_CATEGORY.TABLET));
     }
 
     @Override
     public void showMobilePhones() {
-        setFragment(ProductFragment.newInstance(PRODUCT_CATEGORY.MOBILEPHONE));
+        setFragment(ProductFragment.newInstance(PRODUCT_CATEGORY.PHONES));
     }
 
     @Override
     public void logoutUser() {
         moveToOtherActivity(LoginActivity.class);
         finish();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void onLoginSuccess(LoginSuccessEvent loginSuccessEvent){
+        user = loginSuccessEvent.getUser();
+        EventBus.getDefault().removeStickyEvent(loginSuccessEvent);
+        presenter.onLoad(user);
+    }
+
+    private void setFragment(final BaseFragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_home, fragment);
+        transaction.commit();
     }
 
     class DrawerItemClickListener implements NavigationView.OnNavigationItemSelectedListener {
@@ -111,8 +141,8 @@ public class HomeActivity extends BaseActivity implements HomeMvp.View{
                 item.setChecked(true);
                 switch (item.getItemId()) {
 
-                    case R.id.nav_laptop:
-                        presenter.onNavLaptopClicked();
+                    case R.id.nav_tablet:
+                        presenter.onNavTabletClicked();
                         break;
                     case R.id.nav_cellphone:
                         presenter.onNavMobilePhoneClicked();

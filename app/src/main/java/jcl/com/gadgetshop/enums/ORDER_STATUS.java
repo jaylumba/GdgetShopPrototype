@@ -4,14 +4,15 @@ package jcl.com.gadgetshop.enums;
  * Created by jayanthony.lumba on 3/7/2017.
  */
 
-public enum  PRODUCT_CATEGORY {
+public enum ORDER_STATUS {
 
-    PHONES("PHONE"),
-    TABLET("TABLET");
+    DRAFT("Draft"),
+    CANCELLED("Cancelled"),
+    COMPLETED("Completed");
 
     String text;
 
-    PRODUCT_CATEGORY(String text) {
+    ORDER_STATUS(String text) {
         this.text = text;
     }
 
@@ -19,9 +20,9 @@ public enum  PRODUCT_CATEGORY {
         return this.text;
     }
 
-    public static PRODUCT_CATEGORY fromString(String text) {
+    public static ORDER_STATUS fromString(String text) {
         if (text != null) {
-            for (PRODUCT_CATEGORY stat : PRODUCT_CATEGORY.values()) {
+            for (ORDER_STATUS stat : ORDER_STATUS.values()) {
                 if (text.equalsIgnoreCase(stat.text)) {
                     return stat;
                 }

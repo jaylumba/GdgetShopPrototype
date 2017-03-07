@@ -2,7 +2,6 @@ package jcl.com.gadgetshop.modules.login;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -13,9 +12,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import jcl.com.gadgetshop.R;
 import jcl.com.gadgetshop.base.BaseActivity;
-import jcl.com.gadgetshop.data.DataManager;
-import jcl.com.gadgetshop.data.dao.User;
-import jcl.com.gadgetshop.data.dao.UserDao;
 import jcl.com.gadgetshop.modules.home.HomeActivity;
 import jcl.com.gadgetshop.util.PermissionUtil;
 
@@ -38,8 +34,6 @@ public class LoginActivity extends BaseActivity implements LoginMvp.View {
 
     LoginPresenter presenter;
 
-    UserDao userDao;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,16 +45,6 @@ public class LoginActivity extends BaseActivity implements LoginMvp.View {
 
         if (Build.VERSION.SDK_INT >= 23) {
             PermissionUtil.setupPermissions(this);
-        }
-
-        userDao = DataManager.getInstance().getDbHelper().newSession().getUserDao();
-        if (DataManager.getInstance().getSharedPrefHelper().isFirstLaunced()){
-            User user = new User();
-            user.setEmail("jay@gmail.com");
-            user.setPassword("pass");
-            user.setName("Jay Anthony Lumba");
-            userDao.insertOrReplace(user);
-            DataManager.getInstance().getSharedPrefHelper().saveFirstLaunched(false);
         }
 
     }
@@ -88,13 +72,7 @@ public class LoginActivity extends BaseActivity implements LoginMvp.View {
 
     @Override
     public void showLastUser(String email) {
-        if (email != null) {
-            if (etEmail != null) {
-                etEmail.setText(email);
-            }else{
-                Log.i("LoginActivity","NULL EMAIL VIEW");
-            }
-        }
+        etEmail.setText(email);
     }
 
     @Override
