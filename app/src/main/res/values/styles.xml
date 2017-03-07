@@ -1,0 +1,76 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.Fullscreen" parent="AppTheme">
+        <item name="android:windowFullscreen">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowDisablePreview">true</item>
+    </style>
+
+    <style name="AppTheme.TranslucentStatus" parent="AppTheme">
+        <!--Override on v19 and v21-->
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="TextAppearance.MenuItem" parent="TextAppearance.AppCompat">
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">@dimen/spacing_base2x</item>
+    </style>
+
+    <!--<style name="TextAppearance.Design.CollapsingToolbar.Expanded.Shadow">-->
+    <!--<item name="android:shadowDy">0</item>-->
+    <!--<item name="android:shadowDx">0</item>-->
+    <!--<item name="android:shadowRadius">8</item>-->
+    <!--<item name="android:background">@color/colorTranslucent</item>-->
+    <!--<item name="android:shadowColor">@android:color/colorBlack</item>-->
+    <!--</style>-->
+
+    <!--<style name="AppTabLayout" parent="Widget.Design.TabLayout">-->
+    <!--<item name="tabIndicatorColor">@android:color/colorWhite</item>-->
+    <!--<item name="tabIndicatorHeight">2dp</item>-->
+    <!--<item name="tabPaddingStart">6dp</item>-->
+    <!--<item name="tabPaddingEnd">6dp</item>-->
+    <!--<item name="tabBackground">@color/colorPrimary</item>-->
+    <!--<item name="tabTextAppearance">@style/AppTabTextAppearance</item>-->
+    <!--<item name="tabSelectedTextColor">@android:color/colorWhite</item>-->
+    <!--</style>-->
+
+    <!--<style name="AppTabTextAppearance" parent="TextAppearance.Design.Tab">-->
+    <!--<item name="android:textSize">12sp</item>-->
+    <!--<item name="android:textColor">@color/colorGray</item>-->
+    <!--<item name="textAllCaps">false</item>-->
+    <!--</style>-->
+
+
+    <style name="AppTheme.ButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:textSize">@dimen/fontsize_button</item>
+        <item name="android:padding">@dimen/padding_button</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="fontPath">fonts/Montserrat-SemiBold.otf</item>
+    </style>
+
+    <style name="AppTheme.ButtonStyle.Light" parent="AppTheme.ButtonStyle">
+        <item name="android:background">@drawable/bg_button_light</item>
+    </style>
+
+    <style name="AppTheme.ButtonStyle.Dark" parent="AppTheme.ButtonStyle">
+        <item name="android:background">@drawable/bg_button_dark</item>
+    </style>
+
+
+    <style name="AppTheme.ButtonStyle.Fb" parent="AppTheme.ButtonStyle">
+        <item name="android:background">@drawable/bg_button_fb</item>
+    </style>
+
+</resources>

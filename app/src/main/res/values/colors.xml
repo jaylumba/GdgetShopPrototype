@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#364a55</color>
+    <color name="colorPrimaryAlpha">#66364a55</color>
+    <color name="colorPrimaryDark">#2b3942</color>
+    <color name="colorAccent">#16c9e9</color>
+
+    <color name="colorNavDrawer">#1f282d</color>
+    <color name="colorNavDivider">#353f41</color>
+    <color name="colorTopLogo">#16c9e9</color>
+    <color name="colorBottomLogo">#4b6677</color>
+
+    <color name="colorEditText">#eeeff1</color>
+    <color name="colorEditTextSelectedBorder">#4d6474</color>
+
+    <color name="colorButtonLightNormal">#16c9e9</color>
+    <color name="colorButtonLightPressed">#0fa4b8</color>
+
+    <color name="colorButtonDarkNormal">#4b6677</color>
+    <color name="colorButtonDarkPressed">#344853</color>
+
+    <color name="colorButtonFbNormal">#3e6c9d</color>
+    <color name="colorButtonFbPressed">#345274</color>
+
+    <color name="colorTitle">#242424</color>
+    <color name="colorTagline">#5e5e5e</color>
+
+    <color name="colorPrimaryText">#60717b</color>
+    <color name="colorSecondaryText">#757575</color>
+    <color name="colorIcons">#FFFFFF</color>
+    <color name="colorDivider">#33364a55</color>
+
+
+    <color name="colorSuccessMessage">#689f38</color>
+    <color name="colorErrorMessage">#f44336</color>
+    <color name="colorWarningMessage">#ff9800</color>
+
+    <color name="colorWhite">#FFF</color>
+    <color name="colorBlack">#000</color>
+</resources>

@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Gadget Shop</string>
+
+    <!--ALL-->
+    <string name="all.pleasewait">Please wait...</string>
+    <string name="all.message.error.noconnection">No internet connection! Please check your internet connection and try again.</string>
+    <string name="all.message.error.requiredfield">Please complete all the required fields!</string>
+    <string name="all.message.error.servererror">Server error encountered.</string>
+    <string name="login.msg.authenticating">Authenticating... Please wait...</string>
+    <string name="login.success">Login Success!</string>
+    <string name="login.invalid">Invalid login credentials!</string>
+    <string name="title_activity_home">HomeActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+</resources>
