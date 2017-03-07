@@ -18,6 +18,7 @@
     <dimen name="fontsize_textfield">@dimen/_14sdp</dimen>
     <dimen name="fontsize_texthint">@dimen/_10sdp</dimen>
     <dimen name="fontsize_progress">@dimen/_7sdp</dimen>
+    <dimen name="fontsize_productname">@dimen/_10sdp</dimen>
 
     <!--Spacing-->
     <dimen name="spacing_base_half">@dimen/_3sdp</dimen>

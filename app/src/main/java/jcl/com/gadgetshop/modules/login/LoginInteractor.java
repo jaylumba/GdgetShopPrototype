@@ -27,7 +27,9 @@ public class LoginInteractor implements LoginMvp.Interactor {
 
     @Override
     public void retrieveLastUser() {
-        presenter.requestShowLastUser(sharedPrefHelper.getLastUser());
+        if (!sharedPrefHelper.getLastUser().isEmpty())
+            getLoggedUser(sharedPrefHelper.getLastUser());
+
     }
 
     @Override
@@ -41,6 +43,14 @@ public class LoginInteractor implements LoginMvp.Interactor {
         }else{
             presenter.requestShowInvalidLoginError();
             presenter.requestDismissLoading();
+        }
+    }
+
+    @Override
+    public void getLoggedUser(String email) {
+        User user = dbHelper.newSession().getUserDao().queryBuilder().where(UserDao.Properties.Email.eq(email)).unique();
+        if (user != null){
+            postLoginSuccessEvent(new LoginSuccessEvent(user));
         }
     }
 

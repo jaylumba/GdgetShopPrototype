@@ -80,11 +80,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductA
             NumberFormat formatter = new DecimalFormat("#,###.00");
             holder.tvProductPrice.setText("₱" + formatter.format(currentItem.getPrice()));
             holder.btnAdd.setOnClickListener(view -> {
+                if (onAddToCartClick != null)
                 onAddToCartClick.onAdd(currentItem);
             });
 
             if (callback != null) {
                 holder.rootLayout.setOnClickListener(v -> {
+                    if (callback != null)
                     callback.onItemClick(currentItem);
                 });
             }

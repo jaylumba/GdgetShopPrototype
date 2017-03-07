@@ -12,6 +12,7 @@ public interface LoginMvp {
     interface Interactor{
         void retrieveLastUser();
         void authenticateUser(String email, String password);
+        void getLoggedUser(String email);
         void postLoginSuccessEvent(LoginSuccessEvent loginSuccessEvent);
     }
 

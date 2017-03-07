@@ -31,7 +31,7 @@
             android:layout_above="@+id/tv_product_price"
             android:gravity="center"
             android:padding="@dimen/spacing_base_half"
-            android:textSize="@dimen/fontsize_subheading"
+            android:textSize="@dimen/fontsize_productname"
             android:textColor="@color/colorWhite"
             android:background="@color/colorPrimaryDarkAlpha"
             tools:ignore="MissingPrefix"

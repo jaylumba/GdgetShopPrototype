@@ -109,7 +109,7 @@ public class HomeActivity extends BaseActivity implements HomeMvp.View{
     @Override
     public void initToolbarAndDrawer() {
         setSupportActionBar(toolbar);
-        toolbar.setTitle(getStringFromResource(R.id.nav_cellphone));
+        getSupportActionBar().setTitle(getStringFromResource(R.string.nav_mobile_phone));
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.app_name, R.string.app_name) {
             @Override
             public void onDrawerOpened(View drawerView) {
@@ -186,10 +186,12 @@ public class HomeActivity extends BaseActivity implements HomeMvp.View{
                 item.setChecked(true);
                 switch (item.getItemId()) {
                     case R.id.nav_cellphone:
+                        toolbar.setTitle(getStringFromResource(R.string.nav_mobile_phone));
                         presenter.onNavMobilePhoneClicked();
                         break;
 
                     case R.id.nav_tablet:
+                        toolbar.setTitle(getStringFromResource(R.string.nav_tablets));
                         presenter.onNavTabletClicked();
                         break;
                 }

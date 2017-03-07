@@ -10,9 +10,11 @@ import jcl.com.gadgetshop.data.dao.User;
 public class HomePresenter extends BasePresenter implements HomeMvp.Presenter{
 
     private HomeMvp.View mView;
+    private HomeInteractor interactor;
 
     public HomePresenter(HomeMvp.View view){
         mView = view;
+        interactor = new HomeInteractor(this);
         attachView(mView);
     }
 
@@ -38,6 +40,7 @@ public class HomePresenter extends BasePresenter implements HomeMvp.Presenter{
 
     @Override
     public void onNavLogoutClicked() {
+        interactor.clearLastUser();
         mView.logoutUser();
     }
 }

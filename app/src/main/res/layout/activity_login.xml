@@ -76,7 +76,7 @@
 
     <TextView
         android:id="@+id/tv_or"
-        fontPath="fonts/OpenSans-Semibold.ttf"
+        fontPath="fonts/OpenSans-Regular.ttf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_login"

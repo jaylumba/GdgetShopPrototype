@@ -36,7 +36,7 @@ public class MockData {
 
             createProduct(R.drawable.img_prod_iphone_5s
                     , "Apple iPhone 5s" //name
-                    , 145000 //price
+                    , 14500 //price
                     , "Released 2013, September" //dateRelease
                     , "112g, 7.6mm thickness" //weight
                     , "iOS 7, up to iOS 10.2" //os

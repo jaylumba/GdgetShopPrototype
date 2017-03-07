@@ -9,6 +9,10 @@ import jcl.com.gadgetshop.data.dao.User;
 
 public class HomeMvp {
 
+    interface Interactor{
+        void clearLastUser();
+    }
+
     interface View extends BaseMvp.View{
         void initToolbarAndDrawer();
         void displayNameAndProfilePicture(User user);
