@@ -5,16 +5,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import org.greenrobot.eventbus.EventBus;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -23,19 +20,21 @@ import jcl.com.gadgetshop.R;
 import jcl.com.gadgetshop.adapters.ProductAdapter;
 import jcl.com.gadgetshop.base.BaseFragment;
 import jcl.com.gadgetshop.callbacks.OnAddToCartClick;
-import jcl.com.gadgetshop.callbacks.OnListItemClick;
+import jcl.com.gadgetshop.callbacks.OnListItemClickWithSharedElement;
 import jcl.com.gadgetshop.data.dao.Product;
 import jcl.com.gadgetshop.enums.PRODUCT_CATEGORY;
+import jcl.com.gadgetshop.events.PostProductEvent;
+import jcl.com.gadgetshop.modules.productdetail.ProductDetailActivity;
 
-public class ProductFragment extends BaseFragment implements ProductMvp.View{
+public class ProductFragment extends BaseFragment implements ProductMvp.View {
 
     @BindView(R.id.rv_products)
     RecyclerView rv_products;
 
     private PRODUCT_CATEGORY productCategory;
     private OnAddToCartClick addToCartClick;
-    private OnListItemClick callback;
-    ProductMvp.Presenter mPresenter;
+    private OnListItemClickWithSharedElement callback;
+    ProductMvp.Presenter presenter;
 
     @SuppressLint("ValidFragment")
     private ProductFragment() {
@@ -53,8 +52,9 @@ public class ProductFragment extends BaseFragment implements ProductMvp.View{
         View view = inflater.inflate(R.layout.fragment_product, container, false);
         ButterKnife.bind(this, view);
 
-        mPresenter = new ProductPresenter(this);
-        mPresenter.retrieveProducts(productCategory);
+        presenter = new ProductPresenter(this);
+        presenter.onLoad();
+        presenter.retrieveProducts(productCategory);
 
         return view;
     }
@@ -67,12 +67,27 @@ public class ProductFragment extends BaseFragment implements ProductMvp.View{
 
 
     @Override
+    public void initCallbacks() {
+        addToCartClick = product -> {
+
+        };
+
+        callback = (obj, pos, options) -> {
+            EventBus.getDefault().postSticky(new PostProductEvent((Product) obj));
+            if (options != null)
+                moveToOtherActivityWithSharedElements(ProductDetailActivity.class, options);
+            else
+                moveToOtherActivity(ProductDetailActivity.class);
+        };
+    }
+
+    @Override
     public void displayProducts(List<Product> products) {
-        if (products != null){
+        if (products != null) {
             GridLayoutManager lm = new GridLayoutManager(getActivity(), 2);
             rv_products.setLayoutManager(lm);
             rv_products.setItemAnimator(new DefaultItemAnimator());
-            rv_products.setAdapter(new ProductAdapter(products, addToCartClick,callback));
+            rv_products.setAdapter(new ProductAdapter(getActivity(), products, addToCartClick, callback));
         }
     }
 }

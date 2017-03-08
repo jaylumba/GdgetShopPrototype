@@ -1,6 +1,5 @@
 package jcl.com.gadgetshop.modules.product;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import jcl.com.gadgetshop.base.BasePresenter;
@@ -13,22 +12,27 @@ import jcl.com.gadgetshop.enums.PRODUCT_CATEGORY;
 
 public class ProductPresenter extends BasePresenter implements ProductMvp.Presenter {
 
-    ProductMvp.View mView;
-    ProductInteractor mInteractor;
+    ProductMvp.View view;
+    ProductInteractor interactor;
 
-    public ProductPresenter(ProductMvp.View mView) {
-        this.mView = mView;
-        this.mInteractor = new ProductInteractor(this);
-        attachView(mView);
+    public ProductPresenter(ProductMvp.View view) {
+        this.view = view;
+        this.interactor = new ProductInteractor(this);
+        attachView(view);
+    }
+
+    @Override
+    public void onLoad() {
+        view.initCallbacks();
     }
 
     @Override
     public void retrieveProducts(PRODUCT_CATEGORY productCategory) {
-        mInteractor.retrieveProducts(productCategory);
+        interactor.retrieveProducts(productCategory);
     }
 
     @Override
     public void displayProducts(List<Product> products) {
-        mView.displayProducts(products);
+        view.displayProducts(products);
     }
 }

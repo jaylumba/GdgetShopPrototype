@@ -1,6 +1,5 @@
 package jcl.com.gadgetshop.modules.product;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import jcl.com.gadgetshop.base.BaseMvp;
@@ -17,10 +16,12 @@ public class ProductMvp {
     }
 
     interface View extends BaseMvp.View{
+        void initCallbacks();
         void displayProducts(List<Product> products);
     }
 
     interface Presenter extends BaseMvp.Presenter{
+        void onLoad();
         void retrieveProducts(PRODUCT_CATEGORY productCategory);
         void displayProducts(List<Product> products);
     }

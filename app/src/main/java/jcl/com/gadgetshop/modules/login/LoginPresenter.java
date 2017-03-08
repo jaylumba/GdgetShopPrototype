@@ -5,44 +5,44 @@ import jcl.com.gadgetshop.base.BasePresenter;
 
 public class LoginPresenter extends BasePresenter implements LoginMvp.Presenter {
 
-    LoginMvp.View mView;
-    LoginInteractor mInteractor;
+    LoginMvp.View view;
+    LoginInteractor interactor;
 
-    public LoginPresenter(LoginMvp.View mView) {
-        this.mView = mView;
-        this.mInteractor = new LoginInteractor(this);
-        attachView(mView);
+    public LoginPresenter(LoginMvp.View view) {
+        this.view = view;
+        this.interactor = new LoginInteractor(this);
+        attachView(view);
     }
 
     @Override
     public void onViewLoad() {
-        mInteractor.retrieveLastUser();
+        interactor.retrieveLastUser();
     }
 
     @Override
     public void requestShowLastUser(String email) {
-        mView.showLastUser(email);
+        view.showLastUser(email);
     }
 
     @Override
     public void requestLogin() {
-        mView.showLoginLoading();
-        if (!mView.getEmail().isEmpty() && !mView.getPassword().isEmpty()) {
-            mInteractor.authenticateUser(mView.getEmail(), mView.getPassword());
+        view.showLoginLoading();
+        if (!view.getEmail().isEmpty() && !view.getPassword().isEmpty()) {
+            interactor.authenticateUser(view.getEmail(), view.getPassword());
         } else {
-            mView.dismissLoading();
-            mView.showIncompleteFieldsError();
+            view.dismissLoading();
+            view.showIncompleteFieldsError();
         }
     }
 
     @Override
     public void requestShowLoginSuccess() {
-        mView.showLoginSuccess();
+        view.showLoginSuccess();
     }
 
     @Override
     public void requestShowInvalidLoginError() {
-        mView.showInvalidLoginError();
+        view.showInvalidLoginError();
     }
 
 }

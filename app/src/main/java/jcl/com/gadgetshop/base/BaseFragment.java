@@ -3,6 +3,7 @@ package jcl.com.gadgetshop.base;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -103,5 +104,21 @@ public abstract class BaseFragment extends Fragment implements BaseMvp.View {
     public void onDestroyView() {
         super.onDestroyView();
         progressDialog = null;
+    }
+
+    public void moveToOtherActivity(Class clz) {
+        ((BaseActivity) getActivity()).moveToOtherActivity(clz);
+    }
+
+    public void moveToOtherActivity(Class clz, Bundle bundle) {
+        ((BaseActivity) getActivity()).moveToOtherActivity(clz,bundle);
+    }
+
+    public void moveToOtherActivityWithSharedElements(Class clz, View view, String transitionName) {
+        ((BaseActivity) getActivity()).moveToOtherActivityWithSharedElements(clz,view,transitionName);
+    }
+
+    public void moveToOtherActivityWithSharedElements(Class clz, ActivityOptionsCompat options) {
+        ((BaseActivity) getActivity()).moveToOtherActivityWithSharedElements(clz,options);
     }
 }

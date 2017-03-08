@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="jcl.com.gadgetshop.modules.productdetail.ProductDetailActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:id="@+id/content_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <ImageView
+            android:id="@+id/iv_product"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:padding="@dimen/spacing_base"
+            android:scaleType="fitCenter"
+            android:transitionName="@string/TRANS_PRODUCTIMAGE"
+            tools:src="@drawable/img_prod_iphone_7" />
+
+        <TextView
+            android:id="@+id/tv_product_name"
+            fontPath="fonts/Montserrat-Bold.otf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tv_product_price"
+            android:layout_toEndOf="@+id/iv_product"
+            android:layout_toRightOf="@+id/iv_product"
+            android:gravity="start"
+            android:padding="@dimen/spacing_base"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/fontsize_headline"
+            android:transitionName="@string/TRANS_PRODUCTNAME"
+            tools:ignore="MissingPrefix"
+            tools:text="Apple Iphone 6" />
+
+        <TextView
+            android:id="@+id/tv_product_price"
+            fontPath="fonts/OpenSans-Bold.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_product"
+            android:layout_marginBottom="@dimen/spacing_base2x"
+            android:layout_toEndOf="@+id/iv_product"
+            android:layout_toRightOf="@+id/iv_product"
+            android:gravity="start"
+            android:paddingBottom="@dimen/spacing_base_half"
+            android:paddingLeft="@dimen/spacing_base"
+            android:paddingRight="@dimen/spacing_base"
+            android:paddingTop="@dimen/spacing_base_half"
+            android:textColor="#0092b3"
+            android:textSize="@dimen/fontsize_headline"
+            android:transitionName="@string/TRANS_PRODUCTPRICE"
+            tools:ignore="MissingPrefix"
+            tools:text="&#8369; 29,999" />
+
+        <View
+            android:id="@+id/vw_div1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_3sdp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/iv_product"
+            android:layout_marginBottom="@dimen/spacing_base2x"
+            android:layout_marginTop="@dimen/spacing_base_half"
+            android:background="@color/colorDivider" />
+
+        <ImageView
+            android:id="@+id/iv_screensize_icon"
+            android:layout_width="@dimen/_19sdp"
+            android:layout_height="@dimen/_19sdp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/vw_div1"
+            android:layout_marginLeft="@dimen/spacing_base2x"
+            android:layout_marginStart="@dimen/spacing_base2x"
+            android:src="@drawable/ic_screen_size"
+            android:tint="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/tv_screen_size"
+            fontPath="fonts/OpenSans-Regular.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_screensize_icon"
+            android:layout_alignTop="@+id/iv_screensize_icon"
+            android:layout_marginLeft="@dimen/spacing_base2x"
+            android:layout_marginRight="@dimen/spacing_base2x"
+            android:layout_toEndOf="@+id/iv_screensize_icon"
+            android:layout_toRightOf="@+id/iv_screensize_icon"
+            android:gravity="center_vertical|start"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/fontsize_subheading"
+            tools:ignore="MissingPrefix"
+            tools:text="4.7&quot; (750x1334 pixels)" />
+
+        <ImageView
+            android:id="@+id/iv_camera_icon"
+            android:layout_width="@dimen/_19sdp"
+            android:layout_height="@dimen/_19sdp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/iv_screensize_icon"
+            android:layout_marginLeft="@dimen/spacing_base2x"
+            android:layout_marginStart="@dimen/spacing_base2x"
+            android:layout_marginTop="@dimen/spacing_base2x"
+            android:src="@drawable/ic_camera"
+            android:tint="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/tv_camera"
+            fontPath="fonts/OpenSans-Regular.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_camera_icon"
+            android:layout_alignTop="@+id/iv_camera_icon"
+            android:layout_marginLeft="@dimen/spacing_base2x"
+            android:layout_marginRight="@dimen/spacing_base2x"
+            android:layout_toEndOf="@+id/iv_camera_icon"
+            android:layout_toRightOf="@+id/iv_camera_icon"
+            android:gravity="center_vertical|start"
+            android:text="8MP (1080p)"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/fontsize_subheading"
+            tools:ignore="MissingPrefix" />
+
+        <ImageView
+            android:id="@+id/iv_ram_icon"
+            android:layout_width="@dimen/_19sdp"
+            android:layout_height="@dimen/_19sdp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/iv_camera_icon"
+            android:layout_marginLeft="@dimen/spacing_base2x"
+            android:layout_marginStart="@dimen/spacing_base2x"
+            android:layout_marginTop="@dimen/spacing_base2x"
+            android:src="@drawable/ic_ram"
+            android:tint="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/tv_ram"
+            fontPath="fonts/OpenSans-Regular.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_ram_icon"
+            android:layout_alignTop="@+id/iv_ram_icon"
+            android:layout_marginLeft="@dimen/spacing_base2x"
+            android:layout_marginRight="@dimen/spacing_base2x"
+            android:layout_toEndOf="@+id/iv_ram_icon"
+            android:layout_toRightOf="@+id/iv_ram_icon"
+            android:gravity="center_vertical|start"
+            android:text="1GB RAM (Apple A8)"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/fontsize_subheading"
+            tools:ignore="MissingPrefix" />
+
+        <ImageView
+            android:id="@+id/iv_battery_icon"
+            android:layout_width="@dimen/_19sdp"
+            android:layout_height="@dimen/_19sdp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/iv_ram_icon"
+            android:layout_marginLeft="@dimen/spacing_base2x"
+            android:layout_marginStart="@dimen/spacing_base2x"
+            android:layout_marginTop="@dimen/spacing_base2x"
+            android:src="@drawable/ic_battery"
+            android:tint="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/tv_battery"
+            fontPath="fonts/OpenSans-Regular.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_battery_icon"
+            android:layout_alignTop="@+id/iv_battery_icon"
+            android:layout_marginLeft="@dimen/spacing_base2x"
+            android:layout_marginRight="@dimen/spacing_base2x"
+            android:layout_toEndOf="@+id/iv_battery_icon"
+            android:layout_toRightOf="@+id/iv_battery_icon"
+            android:gravity="center_vertical|start"
+            android:text="1810mAh (Li-Po)"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/fontsize_subheading"
+            tools:ignore="MissingPrefix" />
+
+        <ImageView
+            android:id="@+id/iv_storage_icon"
+            android:layout_width="@dimen/_19sdp"
+            android:layout_height="@dimen/_19sdp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/iv_battery_icon"
+            android:layout_marginLeft="@dimen/spacing_base2x"
+            android:layout_marginStart="@dimen/spacing_base2x"
+            android:layout_marginTop="@dimen/spacing_base2x"
+            android:src="@drawable/ic_storage"
+            android:tint="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/tv_storage"
+            fontPath="fonts/OpenSans-Regular.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_storage_icon"
+            android:layout_alignTop="@+id/iv_storage_icon"
+            android:layout_marginLeft="@dimen/spacing_base2x"
+            android:layout_marginRight="@dimen/spacing_base2x"
+            android:layout_toEndOf="@+id/iv_storage_icon"
+            android:layout_toRightOf="@+id/iv_storage_icon"
+            android:gravity="center_vertical|start"
+            android:text="128GB storage, no card slot"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/fontsize_subheading"
+            tools:ignore="MissingPrefix" />
+
+        <ImageView
+            android:id="@+id/iv_os_icon"
+            android:layout_width="@dimen/_19sdp"
+            android:layout_height="@dimen/_19sdp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/iv_storage_icon"
+            android:layout_marginLeft="@dimen/spacing_base2x"
+            android:layout_marginStart="@dimen/spacing_base2x"
+            android:layout_marginTop="@dimen/spacing_base2x"
+            android:rotation="90"
+            android:src="@drawable/ic_os"
+            android:tint="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/tv_os"
+            fontPath="fonts/OpenSans-Regular.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_os_icon"
+            android:layout_alignTop="@+id/iv_os_icon"
+            android:layout_marginLeft="@dimen/spacing_base2x"
+            android:layout_marginRight="@dimen/spacing_base2x"
+            android:layout_toEndOf="@+id/iv_os_icon"
+            android:layout_toRightOf="@+id/iv_os_icon"
+            android:gravity="center_vertical|start"
+            android:text="iOS 8, up to iOS 10.2"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/fontsize_subheading"
+            tools:ignore="MissingPrefix" />
+
+        <ImageView
+            android:id="@+id/iv_datereleased_icon"
+            android:layout_width="@dimen/_19sdp"
+            android:layout_height="@dimen/_19sdp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/iv_os_icon"
+            android:layout_marginLeft="@dimen/spacing_base2x"
+            android:layout_marginStart="@dimen/spacing_base2x"
+            android:layout_marginTop="@dimen/spacing_base2x"
+            android:src="@drawable/ic_calendar"
+            android:tint="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/tv_released_date"
+            fontPath="fonts/OpenSans-Regular.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_datereleased_icon"
+            android:layout_alignTop="@+id/iv_datereleased_icon"
+            android:layout_marginLeft="@dimen/spacing_base2x"
+            android:layout_marginRight="@dimen/spacing_base2x"
+            android:layout_toEndOf="@+id/iv_datereleased_icon"
+            android:layout_toRightOf="@+id/iv_datereleased_icon"
+            android:gravity="center_vertical|start"
+            android:text="Released 2014, September"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/fontsize_subheading"
+            tools:ignore="MissingPrefix" />
+
+        <Button
+            android:id="@+id/btn_add"
+            style="@style/AppTheme.ButtonStyle.Light"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:drawableLeft="@drawable/ic_cart_plus"
+            android:drawablePadding="@dimen/spacing_base"
+            android:drawableStart="@drawable/ic_cart_plus"
+            android:text="Add to Cart"
+            android:transitionName="@string/TRANS_BUTTONADDTOCART" />
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

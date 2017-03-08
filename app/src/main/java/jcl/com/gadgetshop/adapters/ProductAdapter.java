@@ -1,6 +1,10 @@
 package jcl.com.gadgetshop.adapters;
 
+import android.app.Activity;
 import android.content.Context;
+import android.os.Build;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +22,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import jcl.com.gadgetshop.R;
 import jcl.com.gadgetshop.callbacks.OnAddToCartClick;
-import jcl.com.gadgetshop.callbacks.OnListItemClick;
+import jcl.com.gadgetshop.callbacks.OnListItemClickWithSharedElement;
 import jcl.com.gadgetshop.data.dao.Product;
 import jcl.com.gadgetshop.sinlgetons.PicassoSingleton;
 
@@ -29,8 +33,9 @@ import jcl.com.gadgetshop.sinlgetons.PicassoSingleton;
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductAdapterViewHolder> {
     List<Product> productList;
     OnAddToCartClick onAddToCartClick;
-    OnListItemClick callback;
+    OnListItemClickWithSharedElement callback;
     Context context;
+    Activity activity;
 
     class ProductAdapterViewHolder extends RecyclerView.ViewHolder {
 
@@ -52,7 +57,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductA
         }
     }
 
-    public ProductAdapter(List<Product> productList,OnAddToCartClick onAddToCartClick, OnListItemClick callback) {
+    public ProductAdapter(Activity activity, List<Product> productList, OnAddToCartClick onAddToCartClick, OnListItemClickWithSharedElement callback) {
         this.productList = productList;
         this.onAddToCartClick = onAddToCartClick;
         this.callback = callback;
@@ -81,13 +86,24 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductA
             holder.tvProductPrice.setText("₱" + formatter.format(currentItem.getPrice()));
             holder.btnAdd.setOnClickListener(view -> {
                 if (onAddToCartClick != null)
-                onAddToCartClick.onAdd(currentItem);
+                    onAddToCartClick.onAdd(currentItem);
             });
 
             if (callback != null) {
                 holder.rootLayout.setOnClickListener(v -> {
-                    if (callback != null)
-                    callback.onItemClick(currentItem);
+                    if (callback != null) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                            Pair<View, String> v1 = Pair.create((View) holder.ivProduct, holder.ivProduct.getTransitionName());
+                            Pair<View, String> v2 = Pair.create((View) holder.tvProductName, holder.tvProductName.getTransitionName());
+                            Pair<View, String> v3 = Pair.create((View) holder.tvProductPrice, holder.tvProductPrice.getTransitionName());
+                            Pair<View, String> v4 = Pair.create((View) holder.btnAdd, holder.btnAdd.getTransitionName());
+                            ActivityOptionsCompat options = ActivityOptionsCompat.
+                                    makeSceneTransitionAnimation(activity, v1,v2,v3,v4);
+                            callback.onItemClick(currentItem, position, options);
+                        } else {
+                            callback.onItemClick(currentItem, position, null);
+                        }
+                    }
                 });
             }
         }

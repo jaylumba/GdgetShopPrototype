@@ -18,5 +18,9 @@
     <string name="nav_tablets">TABLETS</string>
     <string name="nav_mobile_phone">MOBILE PHONES</string>
     <string name="nav_logout">LOGOUT</string>
+    <string name="TRANS_PRODUCTIMAGE">trans_product_image</string>
+    <string name="TRANS_PRODUCTNAME">trans_product_name</string>
+    <string name="TRANS_PRODUCTPRICE">trans_product_price</string>
+    <string name="TRANS_BUTTONADDTOCART">trans_product_price</string>
 
 </resources>

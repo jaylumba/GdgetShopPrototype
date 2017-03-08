@@ -9,38 +9,38 @@ import jcl.com.gadgetshop.data.dao.User;
 
 public class HomePresenter extends BasePresenter implements HomeMvp.Presenter{
 
-    private HomeMvp.View mView;
+    private HomeMvp.View view;
     private HomeInteractor interactor;
 
     public HomePresenter(HomeMvp.View view){
-        mView = view;
-        interactor = new HomeInteractor(this);
-        attachView(mView);
+        this.view = view;
+        this.interactor = new HomeInteractor(this);
+        attachView(view);
     }
 
     @Override
     public void onLoad() {
-        mView.initToolbarAndDrawer();
+        view.initToolbarAndDrawer();
     }
 
     @Override
     public void displayNameAndProfilePicture(User user) {
-        mView.displayNameAndProfilePicture(user);
+        view.displayNameAndProfilePicture(user);
     }
 
     @Override
     public void onNavTabletClicked() {
-        mView.showTablets();
+        view.showTablets();
     }
 
     @Override
     public void onNavMobilePhoneClicked() {
-        mView.showMobilePhones();
+        view.showMobilePhones();
     }
 
     @Override
     public void onNavLogoutClicked() {
         interactor.clearLastUser();
-        mView.logoutUser();
+        view.logoutUser();
     }
 }

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="@dimen/_6sdp"
-    android:padding="0dp"
     android:layout_margin="@dimen/spacing_base_half"
-    android:elevation="@dimen/_1sdp">
+    android:elevation="@dimen/_1sdp"
+    android:padding="0dp"
+    app:cardCornerRadius="@dimen/_6sdp">
 
     <RelativeLayout
         android:id="@+id/root_layout"
@@ -21,6 +21,7 @@
             android:layout_centerHorizontal="true"
             android:padding="@dimen/spacing_base"
             android:scaleType="fitCenter"
+            android:transitionName="@string/TRANS_PRODUCTIMAGE"
             tools:src="@drawable/img_prod_iphone_7" />
 
         <TextView
@@ -29,11 +30,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/tv_product_price"
+            android:background="@color/colorPrimaryDarkAlpha"
             android:gravity="center"
             android:padding="@dimen/spacing_base_half"
-            android:textSize="@dimen/fontsize_productname"
             android:textColor="@color/colorWhite"
-            android:background="@color/colorPrimaryDarkAlpha"
+            android:textSize="@dimen/fontsize_productname"
+            android:transitionName="@string/TRANS_PRODUCTNAME"
             tools:ignore="MissingPrefix"
             tools:text="Iphone 6s" />
 
@@ -43,11 +45,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/iv_product"
+            android:background="@color/colorPrimaryDarkAlpha"
             android:gravity="center"
             android:padding="@dimen/spacing_base_half"
-            android:textSize="@dimen/fontsize_subheading"
             android:textColor="@color/colorWhite"
-            android:background="@color/colorPrimaryDarkAlpha"
+            android:textSize="@dimen/fontsize_subheading"
+            android:transitionName="@string/TRANS_PRODUCTPRICE"
             tools:ignore="MissingPrefix"
             tools:text="&#8369; 29,999" />
 
@@ -60,8 +63,9 @@
             android:drawableLeft="@drawable/ic_cart_plus"
             android:drawablePadding="@dimen/spacing_base"
             android:drawableStart="@drawable/ic_cart_plus"
+            android:text="Add to Cart"
             android:textSize="@dimen/fontsize_body1"
-            android:text="Add to Cart" />
+            android:transitionName="@string/TRANS_BUTTONADDTOCART" />
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>
