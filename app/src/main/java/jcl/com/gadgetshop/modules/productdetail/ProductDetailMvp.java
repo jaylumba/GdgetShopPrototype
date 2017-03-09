@@ -10,11 +10,12 @@ import jcl.com.gadgetshop.data.dao.Product;
 public class ProductDetailMvp {
 
     interface Interactor{
-
+        void addToCart(Product product);
     }
 
     interface View extends BaseMvp.View{
         void initToolbar();
+        Product getProduct();
         void setProductImage(int picResId);
         void setProductName(String productName);
         void setProductPrice(String productPrice);
@@ -25,11 +26,15 @@ public class ProductDetailMvp {
         void setStorage(String storage);
         void setOs(String os);
         void setDateReleased(String dateReleased);
+        void addToCart();
+        void finishActivity();
     }
 
     interface Presenter extends BaseMvp.Presenter{
         void onLoad();
         void displayDetails(Product product);
+        void addToCart();
+        void addingSuccessful();
     }
 
 }

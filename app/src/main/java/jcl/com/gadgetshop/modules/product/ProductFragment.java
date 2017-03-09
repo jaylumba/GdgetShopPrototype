@@ -21,9 +21,11 @@ import jcl.com.gadgetshop.adapters.ProductAdapter;
 import jcl.com.gadgetshop.base.BaseFragment;
 import jcl.com.gadgetshop.callbacks.OnAddToCartClick;
 import jcl.com.gadgetshop.callbacks.OnListItemClickWithSharedElement;
+import jcl.com.gadgetshop.data.dao.OrderLine;
 import jcl.com.gadgetshop.data.dao.Product;
 import jcl.com.gadgetshop.enums.PRODUCT_CATEGORY;
-import jcl.com.gadgetshop.events.PostProductEvent;
+import jcl.com.gadgetshop.events.AddProductToCartEvent;
+import jcl.com.gadgetshop.events.PostProductToCartEvent;
 import jcl.com.gadgetshop.modules.productdetail.ProductDetailActivity;
 
 public class ProductFragment extends BaseFragment implements ProductMvp.View {
@@ -69,11 +71,15 @@ public class ProductFragment extends BaseFragment implements ProductMvp.View {
     @Override
     public void initCallbacks() {
         addToCartClick = product -> {
-
+            OrderLine orderLine = new OrderLine();
+            orderLine.setProductId(product.getId());
+            orderLine.setQuantity(1);
+            EventBus.getDefault().postSticky(new AddProductToCartEvent(orderLine));
+            showToast("Successfully added!");
         };
 
         callback = (obj, pos, options) -> {
-            EventBus.getDefault().postSticky(new PostProductEvent((Product) obj));
+            EventBus.getDefault().postSticky(new PostProductToCartEvent((Product) obj));
             if (options != null)
                 moveToOtherActivityWithSharedElements(ProductDetailActivity.class, options);
             else

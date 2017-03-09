@@ -40,4 +40,15 @@ public class ProductDetailPresenter extends BasePresenter implements ProductDeta
         view.setOs(product.getOs());
         view.setDateReleased(product.getDateRelease());
     }
+
+    @Override
+    public void addToCart() {
+        interactor.addToCart(view.getProduct());
+    }
+
+    @Override
+    public void addingSuccessful() {
+        view.finishActivity();
+        view.showToast("Successfully added!");
+    }
 }

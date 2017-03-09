@@ -1,6 +1,12 @@
 package jcl.com.gadgetshop.modules.home;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 import jcl.com.gadgetshop.base.BasePresenter;
+import jcl.com.gadgetshop.data.dao.Order;
+import jcl.com.gadgetshop.data.dao.OrderLine;
 import jcl.com.gadgetshop.data.dao.User;
 
 /**
@@ -42,5 +48,35 @@ public class HomePresenter extends BasePresenter implements HomeMvp.Presenter{
     public void onNavLogoutClicked() {
         interactor.clearLastUser();
         view.logoutUser();
+    }
+
+    @Override
+    public void addProductToCart(OrderLine orderLine) {
+        interactor.addProductToCart(orderLine);
+    }
+
+    @Override
+    public void removeProductToCart(OrderLine orderLine) {
+        interactor.removeProductToCart(orderLine);
+    }
+
+    @Override
+    public HashMap<Long, OrderLine> getCart() {
+        return view.getCart();
+    }
+
+    @Override
+    public void setCart(HashMap<Long, OrderLine> cart) {
+        view.setCart(cart);
+        view.setBadgeCount();
+    }
+
+    @Override
+    public int getProductCountOnCart() {
+        int count = 0;
+        for (Long key : view.getCart().keySet()) {
+            count += view.getCart().get(key).getQuantity();
+        }
+        return count;
     }
 }

@@ -1,7 +1,9 @@
 package jcl.com.gadgetshop.modules.home;
 
+import android.content.Context;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
@@ -20,14 +22,20 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.HashMap;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import jcl.com.gadgetshop.R;
 import jcl.com.gadgetshop.base.BaseActivity;
 import jcl.com.gadgetshop.base.BaseFragment;
+import jcl.com.gadgetshop.customviews.BadgeDrawable;
+import jcl.com.gadgetshop.data.dao.OrderLine;
 import jcl.com.gadgetshop.data.dao.User;
 import jcl.com.gadgetshop.enums.PRODUCT_CATEGORY;
 import jcl.com.gadgetshop.events.LoginSuccessEvent;
+import jcl.com.gadgetshop.events.AddProductToCartEvent;
+import jcl.com.gadgetshop.events.RemoveProductEvent;
 import jcl.com.gadgetshop.modules.login.LoginActivity;
 import jcl.com.gadgetshop.modules.product.ProductFragment;
 import jcl.com.gadgetshop.sinlgetons.PicassoSingleton;
@@ -48,6 +56,8 @@ public class HomeActivity extends BaseActivity implements HomeMvp.View{
     private ActionBarDrawerToggle drawerToggle;
     private HomeMvp.Presenter presenter;
     private User user;
+    private HashMap<Long, OrderLine> cart = new HashMap<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +91,10 @@ public class HomeActivity extends BaseActivity implements HomeMvp.View{
         super.onCreateOptionsMenu(menu);
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.cart, menu);
+
+        MenuItem itemCart = menu.findItem(R.id.menu_item_cart);
+        LayerDrawable icon = (LayerDrawable) itemCart.getIcon();
+        setBadgeCount(this, icon, String.valueOf(presenter.getProductCountOnCart()));
 
         //Change icon color to white
         for (int i = 0; i < menu.size(); i++) {
@@ -159,6 +173,21 @@ public class HomeActivity extends BaseActivity implements HomeMvp.View{
     }
 
     @Override
+    public HashMap<Long,OrderLine> getCart() {
+        return cart;
+    }
+
+    @Override
+    public void setCart(HashMap<Long, OrderLine> cart) {
+        this.cart = cart;
+    }
+
+    @Override
+    public void setBadgeCount() {
+        invalidateOptionsMenu();
+    }
+
+    @Override
     public void logoutUser() {
         moveToOtherActivity(LoginActivity.class);
         finish();
@@ -169,6 +198,32 @@ public class HomeActivity extends BaseActivity implements HomeMvp.View{
         user = loginSuccessEvent.getUser();
         EventBus.getDefault().removeStickyEvent(loginSuccessEvent);
         presenter.displayNameAndProfilePicture(user);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void onAddProduct(AddProductToCartEvent addProductToCartEvent){
+        EventBus.getDefault().removeStickyEvent(addProductToCartEvent);
+        presenter.addProductToCart(addProductToCartEvent.getOrderLine());
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void onRemoveProduct(RemoveProductEvent removeProductToCartEvent){
+        EventBus.getDefault().removeStickyEvent(removeProductToCartEvent);
+        presenter.removeProductToCart(removeProductToCartEvent.getOrderLine());
+    }
+
+    public static void setBadgeCount(Context context, LayerDrawable icon, String count) {
+        BadgeDrawable badge;
+        // Reuse drawable if possible
+        Drawable reuse = icon.findDrawableByLayerId(R.id.ic_badge);
+        if (reuse != null && reuse instanceof BadgeDrawable) {
+            badge = (BadgeDrawable) reuse;
+        } else {
+            badge = new BadgeDrawable(context);
+        }
+        badge.setCount(count);
+        icon.mutate();
+        icon.setDrawableByLayerId(R.id.ic_badge, badge);
     }
 
     private void setFragment(final BaseFragment fragment) {

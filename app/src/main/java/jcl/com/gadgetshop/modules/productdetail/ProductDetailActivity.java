@@ -12,10 +12,11 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import jcl.com.gadgetshop.R;
 import jcl.com.gadgetshop.base.BaseActivity;
 import jcl.com.gadgetshop.data.dao.Product;
-import jcl.com.gadgetshop.events.PostProductEvent;
+import jcl.com.gadgetshop.events.PostProductToCartEvent;
 import jcl.com.gadgetshop.sinlgetons.PicassoSingleton;
 
 public class ProductDetailActivity extends BaseActivity implements ProductDetailMvp.View {
@@ -63,8 +64,7 @@ public class ProductDetailActivity extends BaseActivity implements ProductDetail
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                finish();
-                animateToRight(this);
+                finishActivity();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -87,6 +87,11 @@ public class ProductDetailActivity extends BaseActivity implements ProductDetail
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Product Detail");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public Product getProduct() {
+        return product;
     }
 
     @Override
@@ -142,8 +147,20 @@ public class ProductDetailActivity extends BaseActivity implements ProductDetail
         tvReleasedDate.setText(dateReleased);
     }
 
+    @Override
+    @OnClick(R.id.btn_add)
+    public void addToCart() {
+        presenter.addToCart();
+    }
+
+    @Override
+    public void finishActivity() {
+        finish();
+        animateToRight(this);
+    }
+
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
-    public void onReceiveProductDetail(PostProductEvent postProductEvent){
+    public void onReceiveProductDetail(PostProductToCartEvent postProductEvent){
         product = postProductEvent.getProduct();
         EventBus.getDefault().removeStickyEvent(postProductEvent);
         presenter.displayDetails(product);

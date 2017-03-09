@@ -1,6 +1,10 @@
 package jcl.com.gadgetshop.modules.home;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import jcl.com.gadgetshop.base.BaseMvp;
+import jcl.com.gadgetshop.data.dao.OrderLine;
 import jcl.com.gadgetshop.data.dao.User;
 
 /**
@@ -11,6 +15,8 @@ public class HomeMvp {
 
     interface Interactor{
         void clearLastUser();
+        void addProductToCart(OrderLine orderLine);
+        void removeProductToCart(OrderLine orderLine);
     }
 
     interface View extends BaseMvp.View{
@@ -18,6 +24,9 @@ public class HomeMvp {
         void displayNameAndProfilePicture(User user);
         void showTablets();
         void showMobilePhones();
+        HashMap<Long,OrderLine> getCart();
+        void setCart(HashMap<Long,OrderLine> cart);
+        void setBadgeCount();
         void logoutUser();
     }
 
@@ -27,5 +36,10 @@ public class HomeMvp {
         void onNavTabletClicked();
         void onNavMobilePhoneClicked();
         void onNavLogoutClicked();
+        void addProductToCart(OrderLine orderLine);
+        void removeProductToCart(OrderLine orderLine);
+        HashMap<Long,OrderLine> getCart();
+        void setCart(HashMap<Long,OrderLine> cart);
+        int getProductCountOnCart();
     }
 }
