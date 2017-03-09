@@ -23,6 +23,8 @@
     <color name="colorButtonFbNormal">#3e6c9d</color>
     <color name="colorButtonFbPressed">#345274</color>
 
+    <color name="colorButtonDisabled">#9a9b9a</color>
+
     <color name="colorTitle">#242424</color>
     <color name="colorTagline">#5e5e5e</color>
 

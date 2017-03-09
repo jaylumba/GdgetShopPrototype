@@ -33,7 +33,8 @@
             android:label="@string/title_activity_home"
             android:screenOrientation="sensorPortrait" />
         <activity android:name=".modules.productdetail.ProductDetailActivity" />
-        <activity android:name=".modules.cart.CartActivity"></activity>
+        <activity android:name=".modules.cart.CartActivity" />
+        <activity android:name=".modules.checkout.CheckoutActivity"></activity>
     </application>
 
 </manifest>

@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -17,15 +18,16 @@ import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import jcl.com.gadgetshop.R;
 import jcl.com.gadgetshop.adapters.CartAdapter;
 import jcl.com.gadgetshop.base.BaseActivity;
 import jcl.com.gadgetshop.callbacks.OnCartItemCallback;
 import jcl.com.gadgetshop.data.dao.OrderLine;
-import jcl.com.gadgetshop.data.dao.Product;
 import jcl.com.gadgetshop.events.AddProductToCartEvent;
 import jcl.com.gadgetshop.events.PostCartEvent;
 import jcl.com.gadgetshop.events.RemoveProductToCartEvent;
+import jcl.com.gadgetshop.modules.checkout.CheckoutActivity;
 
 public class CartActivity extends BaseActivity implements CartMvp.View {
 
@@ -35,6 +37,8 @@ public class CartActivity extends BaseActivity implements CartMvp.View {
     RecyclerView rvCart;
     @BindView(R.id.tv_estimated_total)
     TextView tvEstimatedTotal;
+    @BindView(R.id.btn_checkout)
+    Button btnCheckout;
 
     CartPresenter presenter;
     OnCartItemCallback callback;
@@ -98,7 +102,7 @@ public class CartActivity extends BaseActivity implements CartMvp.View {
     @Override
     public void displayCart(ArrayList<OrderLine> orderLines) {
         if (orderLines != null) {
-            LinearLayoutManager lm = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+            LinearLayoutManager lm = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
             rvCart.setLayoutManager(lm);
             rvCart.setItemAnimator(new DefaultItemAnimator());
             rvCart.setAdapter(new CartAdapter(this, orderLines, callback));
@@ -110,10 +114,25 @@ public class CartActivity extends BaseActivity implements CartMvp.View {
         tvEstimatedTotal.setText(estimatedTotal);
     }
 
+    @Override
+    public void disableCheckoutButton() {
+        btnCheckout.setEnabled(false);
+    }
+
+    @Override
+    public void goToCheckoutActivity() {
+        moveToOtherActivity(CheckoutActivity.class);
+    }
+
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
-    public void onReceiveCart(PostCartEvent postCartEvent){
+    public void onReceiveCart(PostCartEvent postCartEvent) {
         cart = postCartEvent.getCart();
         EventBus.getDefault().removeStickyEvent(postCartEvent);
         presenter.displayCart(cart);
+    }
+
+    @OnClick(R.id.btn_checkout)
+    public void onCheckout(){
+        presenter.onCheckout();
     }
 }

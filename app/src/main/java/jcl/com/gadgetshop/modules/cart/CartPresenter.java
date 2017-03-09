@@ -49,5 +49,13 @@ public class CartPresenter extends BasePresenter implements CartMvp.Presenter {
 
         NumberFormat formatter = new DecimalFormat("#,###.00");
         view.setEstimatedTotal("₱" + formatter.format(price));
+
+        if (cart.size() == 0) view.disableCheckoutButton();
+        
+    }
+
+    @Override
+    public void onCheckout() {
+        view.goToCheckoutActivity();
     }
 }

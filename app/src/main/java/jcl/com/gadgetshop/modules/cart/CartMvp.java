@@ -2,7 +2,6 @@ package jcl.com.gadgetshop.modules.cart;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import jcl.com.gadgetshop.base.BaseMvp;
 import jcl.com.gadgetshop.data.dao.OrderLine;
@@ -25,11 +24,14 @@ public class CartMvp {
         void initCallbacks();
         void displayCart(ArrayList<OrderLine> orderLines);
         void setEstimatedTotal(String estimatedTotal);
+        void disableCheckoutButton();
+        void goToCheckoutActivity();
     }
 
     interface Presenter extends BaseMvp.Presenter{
         void onLoad();
         void displayCart(HashMap<Long,OrderLine> cart);
+        void onCheckout();
     }
 
 }

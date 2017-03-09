@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btn_continue">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_base2x">
+
+            <TextView
+                fontPath="fonts/Montserrat-Bold.otf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_base"
+                android:text="Ship To:"
+                android:textSize="@dimen/fontsize_title"
+                tools:ignore="MissingPrefix" />
+
+            <EditText
+                android:id="@+id/et_fullname"
+                style="@style/TextFieldNext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_base2x"
+                android:hint="Name" />
+
+            <EditText
+                android:id="@+id/et_complete_address"
+                style="@style/TextFieldNext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_base2x"
+                android:hint="Complete Address" />
+
+            <EditText
+                android:id="@+id/et_contact_number"
+                style="@style/TextFieldDone"
+                android:layout_width="match_parent"
+                android:inputType="number"
+                android:maxLength="11"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_base2x"
+                android:hint="Contact Number" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_continue"
+        style="@style/AppTheme.ButtonStyle.Light"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="PROCEED TO PAY" />
+
+</RelativeLayout>

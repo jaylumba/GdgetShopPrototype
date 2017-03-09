@@ -75,7 +75,6 @@ public class ProductFragment extends BaseFragment implements ProductMvp.View {
             orderLine.setProductId(product.getId());
             orderLine.setQuantity(1);
             EventBus.getDefault().postSticky(new AddProductToCartEvent(orderLine));
-            showToast("Successfully added!");
         };
 
         callback = (obj, pos, options) -> {

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/llt_buttonContainer">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_base2x">
+            <!--@Property String cardHoldersName;-->
+            <!--@Property String cardNumber;-->
+            <!--@Property String expriryDate;-->
+            <!--@Property String cvv;-->
+            <EditText
+                android:id="@+id/et_cardholders_name"
+                style="@style/TextFieldNext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_base2x"
+                android:hint="Cardholders Name" />
+
+            <EditText
+                android:id="@+id/et_credit_card_number"
+                style="@style/TextFieldNext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_base2x"
+                android:hint="Credit Card Number"
+                android:inputType="number"
+                android:maxLength="19" />
+
+            <EditText
+                android:id="@+id/et_expiry_date"
+                style="@style/TextFieldDone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_base2x"
+                android:hint="Expiry Date (mm/yy)"
+                android:inputType="number"
+                android:maxLength="5" />
+
+            <EditText
+                android:id="@+id/et_cvv"
+                style="@style/TextFieldDone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_base2x"
+                android:hint="Cvv"
+                android:inputType="number"
+                android:maxLength="4" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/llt_buttonContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="@dimen/spacing_base"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_back"
+            style="@style/AppTheme.ButtonStyle.Dark"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="BACK" />
+
+        <View
+            android:layout_width="@dimen/spacing_base"
+            android:layout_height="match_parent"/>
+
+        <Button
+            android:id="@+id/btn_continue"
+            style="@style/AppTheme.ButtonStyle.Light"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_weight="1"
+            android:text="REVIEW ORDER" />
+    </LinearLayout>
+</RelativeLayout>
