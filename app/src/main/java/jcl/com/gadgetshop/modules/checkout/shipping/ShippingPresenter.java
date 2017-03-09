@@ -22,10 +22,14 @@ public class ShippingPresenter extends BasePresenter implements ShippingMvp.Pres
 
     @Override
     public void onLoad() {
+        view.initViews();
     }
 
     @Override
     public void next() {
-        EventBus.getDefault().postSticky(new OnNextEvent());
+        if (view.getFullname().isEmpty() || view.getAddress().isEmpty() || view.getContactNumber().isEmpty())
+            view.showToast("Please complete all required fields!");
+        else
+            EventBus.getDefault().postSticky(new OnNextEvent());
     }
 }

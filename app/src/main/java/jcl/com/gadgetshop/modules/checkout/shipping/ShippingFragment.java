@@ -25,15 +25,11 @@ public class ShippingFragment extends BaseStepFragment implements ShippingMvp.Vi
     Button btnContinue;
 
     ShippingPresenter presenter;
+    View view;
 
     @SuppressLint("ValidFragment")
     private ShippingFragment() {
         //Use to avoid using the new constructor.
-    }
-
-    @Override
-    public String name() {
-        return "Shipping";
     }
 
     public static ShippingFragment newInstance() {
@@ -43,23 +39,15 @@ public class ShippingFragment extends BaseStepFragment implements ShippingMvp.Vi
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_shipping, container, false);
-
-        etFullname = ButterKnife.findById(view,R.id.et_fullname);
-        etCompleteAddress = ButterKnife.findById(view,R.id.et_complete_address);
-        etContactNumber = ButterKnife.findById(view,R.id.et_contact_number);
-        btnContinue = ButterKnife.findById(view,R.id.btn_continue);
-        btnContinue.setOnClickListener(view1 -> {
-            if (etFullname.getText().toString().isEmpty()
-                    || etCompleteAddress.getText().toString().isEmpty()
-                    || etContactNumber.getText().toString().isEmpty())
-                showToast("Please complete all required fields!");
-            else presenter.next();
-        });
-
+        view = inflater.inflate(R.layout.fragment_shipping, container, false);
         presenter = new ShippingPresenter(this);
         presenter.onLoad();
         return view;
+    }
+
+    @Override
+    public String name() {
+        return "Shipping";
     }
 
     @Override
@@ -70,5 +58,31 @@ public class ShippingFragment extends BaseStepFragment implements ShippingMvp.Vi
     @Override
     public String error() {
         return "Please complete all required fields.";
+    }
+
+    @Override
+    public void initViews() {
+        etFullname = ButterKnife.findById(view,R.id.et_fullname);
+        etCompleteAddress = ButterKnife.findById(view,R.id.et_complete_address);
+        etContactNumber = ButterKnife.findById(view,R.id.et_contact_number);
+        btnContinue = ButterKnife.findById(view,R.id.btn_continue);
+        btnContinue.setOnClickListener(view1 -> {
+            presenter.next();
+        });
+    }
+
+    @Override
+    public String getFullname() {
+        return etFullname.getText().toString();
+    }
+
+    @Override
+    public String getAddress() {
+        return etCompleteAddress.getText().toString();
+    }
+
+    @Override
+    public String getContactNumber() {
+        return etContactNumber.getText().toString();
     }
 }
