@@ -75,8 +75,20 @@
         <item name="android:background">@drawable/bg_button_dark</item>
     </style>
 
+    <style name="AppTheme.ButtonStyle.Red" parent="AppTheme.ButtonStyle">
+        <item name="android:background">@drawable/bg_button_red</item>
+    </style>
+
+    <style name="AppTheme.ButtonStyle.AddToCart.Light.Flattop" parent="AppTheme.ButtonStyle.AddToCart">
+        <item name="android:background">@drawable/bg_button_addtocart_flattop</item>
+    </style>
+
     <style name="AppTheme.ButtonStyle.AddToCart.Light" parent="AppTheme.ButtonStyle.AddToCart">
-        <item name="android:background">@drawable/bg_button_light_flatop</item>
+        <item name="android:background">@drawable/bg_button_addtocart</item>
+    </style>
+
+    <style name="AppTheme.ButtonStyle.AddToCart.Red" parent="AppTheme.ButtonStyle.AddToCart">
+        <item name="android:background">@drawable/bg_button_red</item>
     </style>
 
     <style name="AppTheme.ButtonStyle.Fb" parent="AppTheme.ButtonStyle">

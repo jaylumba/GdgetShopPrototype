@@ -25,13 +25,13 @@ import jcl.com.gadgetshop.data.dao.OrderLine;
 import jcl.com.gadgetshop.data.dao.Product;
 import jcl.com.gadgetshop.enums.PRODUCT_CATEGORY;
 import jcl.com.gadgetshop.events.AddProductToCartEvent;
-import jcl.com.gadgetshop.events.PostProductToCartEvent;
+import jcl.com.gadgetshop.events.PostProductDetailEvent;
 import jcl.com.gadgetshop.modules.productdetail.ProductDetailActivity;
 
 public class ProductFragment extends BaseFragment implements ProductMvp.View {
 
     @BindView(R.id.rv_products)
-    RecyclerView rv_products;
+    RecyclerView rvProducts;
 
     private PRODUCT_CATEGORY productCategory;
     private OnAddToCartClick addToCartClick;
@@ -79,7 +79,7 @@ public class ProductFragment extends BaseFragment implements ProductMvp.View {
         };
 
         callback = (obj, pos, options) -> {
-            EventBus.getDefault().postSticky(new PostProductToCartEvent((Product) obj));
+            EventBus.getDefault().postSticky(new PostProductDetailEvent((Product) obj));
             if (options != null)
                 moveToOtherActivityWithSharedElements(ProductDetailActivity.class, options);
             else
@@ -91,9 +91,9 @@ public class ProductFragment extends BaseFragment implements ProductMvp.View {
     public void displayProducts(List<Product> products) {
         if (products != null) {
             GridLayoutManager lm = new GridLayoutManager(getActivity(), 2);
-            rv_products.setLayoutManager(lm);
-            rv_products.setItemAnimator(new DefaultItemAnimator());
-            rv_products.setAdapter(new ProductAdapter(getActivity(), products, addToCartClick, callback));
+            rvProducts.setLayoutManager(lm);
+            rvProducts.setItemAnimator(new DefaultItemAnimator());
+            rvProducts.setAdapter(new ProductAdapter(getActivity(), products, addToCartClick, callback));
         }
     }
 }

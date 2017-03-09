@@ -44,16 +44,16 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvp.
 
     @Override
     public void showToast(int stringId) {
-        if(toast != null){
+        if (toast != null) {
             toast.cancel();
         }
-        toast = Toast.makeText(getApplicationContext(), getStringFromResource(stringId),Toast.LENGTH_SHORT);
+        toast = Toast.makeText(getApplicationContext(), getStringFromResource(stringId), Toast.LENGTH_SHORT);
         toast.show();
     }
 
     @Override
     public void showToast(String message) {
-        if(toast != null){
+        if (toast != null) {
             toast.cancel();
         }
         toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
@@ -90,7 +90,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvp.
         progressDialog.setMessage(getStringFromResource(stringId));
     }
 
-    private void initProgressDialog(){
+    private void initProgressDialog() {
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("");
         progressDialog.setMessage(getStringFromResource(R.string.all_pleasewait));
@@ -98,7 +98,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvp.
         progressDialog.setCancelable(false);
     }
 
-    protected String getStringFromResource(int stringId){
+    protected String getStringFromResource(int stringId) {
         return getResources().getString(stringId);
     }
 
@@ -128,32 +128,34 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvp.
     public boolean dispatchTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             View v = getCurrentFocus();
-            if ( v instanceof EditText) {
+            if (v instanceof EditText) {
                 Rect outRect = new Rect();
                 v.getGlobalVisibleRect(outRect);
-                if (!outRect.contains((int)event.getRawX(), (int)event.getRawY())) {
+                if (!outRect.contains((int) event.getRawX(), (int) event.getRawY())) {
                     v.clearFocus();
                     InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 }
             }
         }
-        return super.dispatchTouchEvent( event );
+        return super.dispatchTouchEvent(event);
     }
 
-    public void animateToLeft(Activity activity) {
+    private void animateToLeft(Activity activity) {
         activity.overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
     }
 
-    public static void animateToRight(Activity activity) {
+    private void animateToRight(Activity activity) {
         activity.overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
     }
 
+    @Override
     public void moveToOtherActivity(Class clz) {
         startActivity(new Intent(this, clz));
         animateToLeft(this);
     }
 
+    @Override
     public void moveToOtherActivity(Class clz, Bundle bundle) {
         Intent intent = new Intent(this, clz);
         intent.putExtra("bundle", bundle);
@@ -161,20 +163,22 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvp.
         animateToLeft(this);
     }
 
+    @Override
     public void moveToOtherActivityWithSharedElements(Class clz, View view, String transitionName) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             ActivityOptionsCompat options = ActivityOptionsCompat.
                     makeSceneTransitionAnimation(this, (View) view, transitionName);
             startActivity(new Intent(this, clz), options.toBundle());
-        }else{
+        } else {
             startActivity(new Intent(this, clz));
         }
     }
 
+    @Override
     public void moveToOtherActivityWithSharedElements(Class clz, ActivityOptionsCompat options) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             startActivity(new Intent(this, clz), options.toBundle());
-        }else{
+        } else {
             startActivity(new Intent(this, clz));
         }
     }
@@ -196,4 +200,9 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseMvp.
 //        alert.show();
 //    }
 
+    @Override
+    public void finishActivity() {
+        finish();
+        animateToRight(this);
+    }
 }

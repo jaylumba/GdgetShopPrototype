@@ -27,7 +27,6 @@ public class ProductDetailMvp {
         void setOs(String os);
         void setDateReleased(String dateReleased);
         void addToCart();
-        void finishActivity();
     }
 
     interface Presenter extends BaseMvp.Presenter{

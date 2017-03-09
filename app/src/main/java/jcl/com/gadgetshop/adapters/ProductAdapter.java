@@ -30,14 +30,14 @@ import jcl.com.gadgetshop.sinlgetons.PicassoSingleton;
  * Created by jayanthony.lumba on 3/7/2017.
  */
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductAdapterViewHolder> {
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
     List<Product> productList;
     OnAddToCartClick onAddToCartClick;
     OnListItemClickWithSharedElement callback;
     Context context;
     Activity activity;
 
-    class ProductAdapterViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.root_layout)
         RelativeLayout rootLayout;
@@ -50,7 +50,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductA
         @BindView(R.id.btn_add)
         Button btnAdd;
 
-        public ProductAdapterViewHolder(View view) {
+        public ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
 
@@ -64,15 +64,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductA
     }
 
     @Override
-    public ProductAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         context = parent.getContext();
         int layoutResourceId = R.layout.adapter_product;
         View itemView = LayoutInflater.from(context).inflate(layoutResourceId, parent, false);
-        return new ProductAdapterViewHolder(itemView);
+        return new ViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(ProductAdapterViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         if (holder != null) {
             final Product currentItem = productList.get(position);
 

@@ -106,19 +106,28 @@ public abstract class BaseFragment extends Fragment implements BaseMvp.View {
         progressDialog = null;
     }
 
+    @Override
     public void moveToOtherActivity(Class clz) {
         ((BaseActivity) getActivity()).moveToOtherActivity(clz);
     }
 
+    @Override
     public void moveToOtherActivity(Class clz, Bundle bundle) {
         ((BaseActivity) getActivity()).moveToOtherActivity(clz,bundle);
     }
 
+    @Override
     public void moveToOtherActivityWithSharedElements(Class clz, View view, String transitionName) {
         ((BaseActivity) getActivity()).moveToOtherActivityWithSharedElements(clz,view,transitionName);
     }
 
+    @Override
     public void moveToOtherActivityWithSharedElements(Class clz, ActivityOptionsCompat options) {
         ((BaseActivity) getActivity()).moveToOtherActivityWithSharedElements(clz,options);
+    }
+
+    @Override
+    public void finishActivity(){
+        ((BaseActivity) getActivity()).finishActivity();
     }
 }

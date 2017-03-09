@@ -35,7 +35,9 @@ import jcl.com.gadgetshop.data.dao.User;
 import jcl.com.gadgetshop.enums.PRODUCT_CATEGORY;
 import jcl.com.gadgetshop.events.LoginSuccessEvent;
 import jcl.com.gadgetshop.events.AddProductToCartEvent;
-import jcl.com.gadgetshop.events.RemoveProductEvent;
+import jcl.com.gadgetshop.events.PostCartEvent;
+import jcl.com.gadgetshop.events.RemoveProductToCartEvent;
+import jcl.com.gadgetshop.modules.cart.CartActivity;
 import jcl.com.gadgetshop.modules.login.LoginActivity;
 import jcl.com.gadgetshop.modules.product.ProductFragment;
 import jcl.com.gadgetshop.sinlgetons.PicassoSingleton;
@@ -112,7 +114,8 @@ public class HomeActivity extends BaseActivity implements HomeMvp.View{
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_item_cart:
-                showToast("Display Cart");
+                EventBus.getDefault().postSticky(new PostCartEvent(cart));
+                moveToOtherActivity(CartActivity.class);
                 break;
             default:
                 break;
@@ -180,6 +183,7 @@ public class HomeActivity extends BaseActivity implements HomeMvp.View{
     @Override
     public void setCart(HashMap<Long, OrderLine> cart) {
         this.cart = cart;
+        EventBus.getDefault().postSticky(new PostCartEvent(cart));
     }
 
     @Override
@@ -207,7 +211,7 @@ public class HomeActivity extends BaseActivity implements HomeMvp.View{
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
-    public void onRemoveProduct(RemoveProductEvent removeProductToCartEvent){
+    public void onRemoveProduct(RemoveProductToCartEvent removeProductToCartEvent){
         EventBus.getDefault().removeStickyEvent(removeProductToCartEvent);
         presenter.removeProductToCart(removeProductToCartEvent.getOrderLine());
     }

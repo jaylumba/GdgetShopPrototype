@@ -2,13 +2,13 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true">
         <shape android:shape="rectangle">
-            <corners android:bottomLeftRadius="@dimen/_6sdp" android:bottomRightRadius="@dimen/_6sdp" />
+            <corners android:bottomLeftRadius="@dimen/_3sdp" android:bottomRightRadius="@dimen/_6sdp" />
             <solid android:color="@color/colorButtonLightPressed" />
         </shape>
     </item>
     <item>
         <shape android:shape="rectangle">
-            <corners android:bottomLeftRadius="@dimen/_6sdp" android:bottomRightRadius="@dimen/_6sdp" />
+            <corners android:bottomLeftRadius="@dimen/_3sdp" android:bottomRightRadius="@dimen/_6sdp" />
             <solid android:color="@color/colorButtonLightNormal" />
         </shape>
     </item>

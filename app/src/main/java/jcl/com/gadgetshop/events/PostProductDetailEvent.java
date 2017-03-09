@@ -6,10 +6,10 @@ import jcl.com.gadgetshop.data.dao.Product;
  * Created by jayan on 3/9/2017.
  */
 
-public class PostProductToCartEvent {
+public class PostProductDetailEvent {
     Product product;
 
-    public PostProductToCartEvent(Product product) {
+    public PostProductDetailEvent(Product product) {
         this.product = product;
     }
 

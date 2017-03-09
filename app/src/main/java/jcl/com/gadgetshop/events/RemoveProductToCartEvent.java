@@ -7,10 +7,10 @@ import jcl.com.gadgetshop.data.dao.OrderLine;
  * Created by jayanthony.lumba on 3/9/2017.
  */
 
-public class RemoveProductEvent {
+public class RemoveProductToCartEvent {
     OrderLine orderLine;
 
-    public RemoveProductEvent(OrderLine orderLine) {
+    public RemoveProductToCartEvent(OrderLine orderLine) {
         this.orderLine = orderLine;
     }
 

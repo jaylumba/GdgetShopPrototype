@@ -16,15 +16,13 @@ import butterknife.OnClick;
 import jcl.com.gadgetshop.R;
 import jcl.com.gadgetshop.base.BaseActivity;
 import jcl.com.gadgetshop.data.dao.Product;
-import jcl.com.gadgetshop.events.PostProductToCartEvent;
+import jcl.com.gadgetshop.events.PostProductDetailEvent;
 import jcl.com.gadgetshop.sinlgetons.PicassoSingleton;
 
 public class ProductDetailActivity extends BaseActivity implements ProductDetailMvp.View {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-
-    ProductDetailPresenter presenter;
     @BindView(R.id.iv_product)
     ImageView ivProduct;
     @BindView(R.id.tv_product_name)
@@ -46,6 +44,7 @@ public class ProductDetailActivity extends BaseActivity implements ProductDetail
     @BindView(R.id.tv_released_date)
     TextView tvReleasedDate;
 
+    ProductDetailPresenter presenter;
     Product product;
 
     @Override
@@ -153,14 +152,8 @@ public class ProductDetailActivity extends BaseActivity implements ProductDetail
         presenter.addToCart();
     }
 
-    @Override
-    public void finishActivity() {
-        finish();
-        animateToRight(this);
-    }
-
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
-    public void onReceiveProductDetail(PostProductToCartEvent postProductEvent){
+    public void onReceiveProductDetail(PostProductDetailEvent postProductEvent){
         product = postProductEvent.getProduct();
         EventBus.getDefault().removeStickyEvent(postProductEvent);
         presenter.displayDetails(product);

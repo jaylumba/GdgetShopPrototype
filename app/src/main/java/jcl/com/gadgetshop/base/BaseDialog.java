@@ -1,6 +1,8 @@
 package jcl.com.gadgetshop.base;
 
 import android.app.Dialog;
+import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 
@@ -78,6 +80,26 @@ public class BaseDialog implements BaseDialogView {
     }
 
     @Override
+    public void moveToOtherActivity(Class clz) {
+        activity.moveToOtherActivity(clz);
+    }
+
+    @Override
+    public void moveToOtherActivity(Class clz, Bundle bundle) {
+        activity.moveToOtherActivity(clz,bundle);
+    }
+
+    @Override
+    public void moveToOtherActivityWithSharedElements(Class clz, View view, String transitionName) {
+        activity.moveToOtherActivityWithSharedElements(clz,view,transitionName);
+    }
+
+    @Override
+    public void moveToOtherActivityWithSharedElements(Class clz, ActivityOptionsCompat options) {
+        activity.moveToOtherActivityWithSharedElements(clz, options);
+    }
+
+    @Override
     public void showServerError() {
         activity.showServerError();
     }
@@ -91,4 +113,11 @@ public class BaseDialog implements BaseDialogView {
     public void dismissDialog() {
         dialog.dismiss();
     }
+
+    @Override
+    public void finishActivity() {
+        activity.finishActivity();
+    }
+
+
 }

@@ -9,5 +9,6 @@ public interface BaseDialogView extends BaseMvp.View{
     void setCancelable(boolean isCancelable);
     void showDialog();
     void dismissDialog();
+    void finishActivity();
 
 }
