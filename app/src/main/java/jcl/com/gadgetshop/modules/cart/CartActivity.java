@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -32,6 +33,8 @@ public class CartActivity extends BaseActivity implements CartMvp.View {
     Toolbar toolbar;
     @BindView(R.id.rv_cart)
     RecyclerView rvCart;
+    @BindView(R.id.tv_estimated_total)
+    TextView tvEstimatedTotal;
 
     CartPresenter presenter;
     OnCartItemCallback callback;
@@ -100,6 +103,11 @@ public class CartActivity extends BaseActivity implements CartMvp.View {
             rvCart.setItemAnimator(new DefaultItemAnimator());
             rvCart.setAdapter(new CartAdapter(this, orderLines, callback));
         }
+    }
+
+    @Override
+    public void setEstimatedTotal(String estimatedTotal) {
+        tvEstimatedTotal.setText(estimatedTotal);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)

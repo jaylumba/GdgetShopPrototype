@@ -31,8 +31,46 @@
             android:id="@+id/rv_cart"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_above="@+id/llt_estimated_total"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
+
+        <LinearLayout
+            android:id="@+id/llt_estimated_total"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btn_checkout"
+            android:background="@color/colorWhite"
+            android:gravity="center"
+            android:padding="@dimen/spacing_base_half">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/spacing_base"
+                android:text="Estimated Total:"
+                android:textSize="@dimen/fontsize_body1" />
+
+            <TextView
+                android:id="@+id/tv_estimated_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:padding="@dimen/spacing_base"
+                tools:text="₱ 11,999.00"
+                android:textSize="@dimen/fontsize_subheading" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_checkout"
+            style="@style/AppTheme.ButtonStyle.Light"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="Proceed To Checkout"
+            android:transitionName="@string/TRANS_BUTTONADDTOCART" />
 
     </RelativeLayout>
 

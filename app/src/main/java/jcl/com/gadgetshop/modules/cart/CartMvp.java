@@ -24,6 +24,7 @@ public class CartMvp {
         void initToolbar();
         void initCallbacks();
         void displayCart(ArrayList<OrderLine> orderLines);
+        void setEstimatedTotal(String estimatedTotal);
     }
 
     interface Presenter extends BaseMvp.Presenter{
