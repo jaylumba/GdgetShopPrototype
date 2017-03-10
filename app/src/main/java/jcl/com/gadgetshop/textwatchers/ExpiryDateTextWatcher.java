@@ -39,7 +39,7 @@ public class ExpiryDateTextWatcher implements TextWatcher {
         else if (working.length()==5 && before ==0) {
             String enteredYear = working.substring(3);
             int currentYear = Calendar.getInstance().get(Calendar.YEAR);
-            String currentYearStr = String.valueOf(currentYear).substring(0,2);
+            String currentYearStr = String.valueOf(currentYear).substring(2,4);
             currentYear = Integer.parseInt(currentYearStr);
             if (Integer.parseInt(enteredYear) < currentYear) {
                 isValid = false;
