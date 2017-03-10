@@ -26,6 +26,7 @@ import jcl.com.gadgetshop.callbacks.OnCartItemCallback;
 import jcl.com.gadgetshop.data.dao.OrderLine;
 import jcl.com.gadgetshop.events.AddProductToCartEvent;
 import jcl.com.gadgetshop.events.PostCartEvent;
+import jcl.com.gadgetshop.events.PostFinishCartEvent;
 import jcl.com.gadgetshop.events.RemoveProductToCartEvent;
 import jcl.com.gadgetshop.modules.checkout.CheckoutActivity;
 
@@ -131,8 +132,14 @@ public class CartActivity extends BaseActivity implements CartMvp.View {
         presenter.displayCart(cart);
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void onReceiveFinishCartEvent(PostFinishCartEvent event) {
+        EventBus.getDefault().removeStickyEvent(event);
+        finishActivity();
+    }
+
     @OnClick(R.id.btn_checkout)
     public void onCheckout(){
-        presenter.onCheckout();
+        presenter.onCheckout(cart);
     }
 }

@@ -29,6 +29,7 @@
                 android:id="@+id/et_fullname"
                 style="@style/TextFieldNext"
                 android:layout_width="match_parent"
+                android:inputType="textCapWords"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_base2x"
                 android:hint="Name" />
@@ -37,6 +38,7 @@
                 android:id="@+id/et_complete_address"
                 style="@style/TextFieldNext"
                 android:layout_width="match_parent"
+                android:inputType="textCapWords"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_base2x"
                 android:hint="Complete Address" />

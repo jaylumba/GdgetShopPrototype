@@ -12,6 +12,7 @@ public class PaymentMvp {
 
     interface Interactor {
         void postPaymentInfo(PaymentInfo paymentInfo);
+        void postBackAction();
     }
 
     interface View extends BaseMvp.View {
@@ -20,11 +21,13 @@ public class PaymentMvp {
         String getCreditCardNumber();
         String getExpiryDate();
         String getCvv();
+        boolean hasError();
     }
 
     interface Presenter extends BaseMvp.Presenter {
         void onLoad();
         void next();
+        void back();
     }
 
 }

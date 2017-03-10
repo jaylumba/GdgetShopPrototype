@@ -9,24 +9,32 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import jcl.com.gadgetshop.R;
 import jcl.com.gadgetshop.base.BaseStepFragment;
+import jcl.com.gadgetshop.textwatchers.ExpiryDateTextWatcher;
 
 /**
  * Created by jayan on 3/9/2017.
  */
 
-public class PaymentFragment extends BaseStepFragment implements PaymentMvp.View{
+public class PaymentFragment extends BaseStepFragment implements PaymentMvp.View {
 
+    @BindView(R.id.et_cardholders_name)
     EditText etCardholdersName;
+    @BindView(R.id.et_credit_card_number)
     EditText etCreditCardNumber;
+    @BindView(R.id.et_expiry_date)
     EditText etExpiryDate;
+    @BindView(R.id.et_cvv)
     EditText etCvv;
+    @BindView(R.id.btn_back)
+    Button btnBack;
+    @BindView(R.id.btn_continue)
     Button btnContinue;
 
     PaymentPresenter presenter;
-    View view;
 
     @SuppressLint("ValidFragment")
     private PaymentFragment() {
@@ -40,7 +48,8 @@ public class PaymentFragment extends BaseStepFragment implements PaymentMvp.View
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_payment, container, false);
+        View view = inflater.inflate(R.layout.fragment_payment, container, false);
+        ButterKnife.bind(this, view);
         presenter = new PaymentPresenter(this);
         presenter.onLoad();
         return view;
@@ -78,13 +87,14 @@ public class PaymentFragment extends BaseStepFragment implements PaymentMvp.View
 
     @Override
     public void initViews() {
-        etCardholdersName = ButterKnife.findById(view,R.id.et_cardholders_name);
-        etCreditCardNumber = ButterKnife.findById(view,R.id.et_credit_card_number);
-        etExpiryDate = ButterKnife.findById(view,R.id.et_expiry_date);
-        etCvv = ButterKnife.findById(view,R.id.et_cvv);
-        btnContinue = ButterKnife.findById(view,R.id.btn_continue);
+        etExpiryDate.addTextChangedListener(new ExpiryDateTextWatcher(etExpiryDate));
+
         btnContinue.setOnClickListener(view1 -> {
             presenter.next();
+        });
+
+        btnBack.setOnClickListener(view1 -> {
+            presenter.back();
         });
     }
 
@@ -106,5 +116,10 @@ public class PaymentFragment extends BaseStepFragment implements PaymentMvp.View
     @Override
     public String getCvv() {
         return etCvv.getText().toString();
+    }
+
+    @Override
+    public boolean hasError() {
+        return false;
     }
 }

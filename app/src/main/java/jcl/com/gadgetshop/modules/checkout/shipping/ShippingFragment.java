@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import jcl.com.gadgetshop.R;
 import jcl.com.gadgetshop.base.BaseStepFragment;
@@ -17,15 +18,18 @@ import jcl.com.gadgetshop.base.BaseStepFragment;
  * Created by jayan on 3/9/2017.
  */
 
-public class ShippingFragment extends BaseStepFragment implements ShippingMvp.View{
+public class ShippingFragment extends BaseStepFragment implements ShippingMvp.View {
 
+    @BindView(R.id.et_fullname)
     EditText etFullname;
+    @BindView(R.id.et_complete_address)
     EditText etCompleteAddress;
+    @BindView(R.id.et_contact_number)
     EditText etContactNumber;
+    @BindView(R.id.btn_continue)
     Button btnContinue;
 
     ShippingPresenter presenter;
-    View view;
 
     @SuppressLint("ValidFragment")
     private ShippingFragment() {
@@ -39,7 +43,8 @@ public class ShippingFragment extends BaseStepFragment implements ShippingMvp.Vi
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_shipping, container, false);
+        View view = inflater.inflate(R.layout.fragment_shipping, container, false);
+        ButterKnife.bind(this, view);
         presenter = new ShippingPresenter(this);
         presenter.onLoad();
         return view;
@@ -62,10 +67,6 @@ public class ShippingFragment extends BaseStepFragment implements ShippingMvp.Vi
 
     @Override
     public void initViews() {
-        etFullname = ButterKnife.findById(view,R.id.et_fullname);
-        etCompleteAddress = ButterKnife.findById(view,R.id.et_complete_address);
-        etContactNumber = ButterKnife.findById(view,R.id.et_contact_number);
-        btnContinue = ButterKnife.findById(view,R.id.btn_continue);
         btnContinue.setOnClickListener(view1 -> {
             presenter.next();
         });

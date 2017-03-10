@@ -16,7 +16,9 @@ import jcl.com.gadgetshop.base.BaseTabStepperActivity;
 import jcl.com.gadgetshop.events.OnNextEvent;
 import jcl.com.gadgetshop.events.OnPreviousEvent;
 import jcl.com.gadgetshop.modules.checkout.payment.PaymentFragment;
+import jcl.com.gadgetshop.modules.checkout.review.ReviewFragment;
 import jcl.com.gadgetshop.modules.checkout.shipping.ShippingFragment;
+import jcl.com.gadgetshop.modules.successpage.SuccessActivity;
 
 public class CheckoutActivity extends BaseTabStepperActivity implements CheckoutMvp.View {
 
@@ -36,7 +38,7 @@ public class CheckoutActivity extends BaseTabStepperActivity implements Checkout
 
         addStep(createFragment(ShippingFragment.newInstance()));
         addStep(createFragment(PaymentFragment.newInstance()));
-        addStep(createFragment(ShippingFragment.newInstance()));
+        addStep(createFragment(ReviewFragment.newInstance()));
 
         super.onCreate(savedInstanceState);
 
@@ -88,7 +90,8 @@ public class CheckoutActivity extends BaseTabStepperActivity implements Checkout
     @Override
     public void onComplete() {
         super.onComplete();
-        showToast("Completed");
+        moveToOtherActivity(SuccessActivity.class);
+        finish();
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
@@ -102,5 +105,4 @@ public class CheckoutActivity extends BaseTabStepperActivity implements Checkout
         EventBus.getDefault().removeStickyEvent(onPreviousEvent);
         this.onPrevious();
     }
-
 }

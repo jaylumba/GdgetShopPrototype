@@ -55,7 +55,12 @@ public class CartPresenter extends BasePresenter implements CartMvp.Presenter {
     }
 
     @Override
-    public void onCheckout() {
+    public void onCheckout(HashMap<Long, OrderLine> cart) {
+        ArrayList<OrderLine> orderLines = new ArrayList<>();
+        for (Long key: cart.keySet()){
+            orderLines.add(cart.get(key));
+        }
+        interactor.postCartToCheckout(orderLines);
         view.goToCheckoutActivity();
     }
 }

@@ -14,9 +14,7 @@ import jcl.com.gadgetshop.data.dao.Product;
 public class CartMvp {
 
     interface Interactor{
-        void increaseQty(Product product);
-        void decreaseQty(Product product);
-        void removeOrderLine(OrderLine orderLine);
+       void postCartToCheckout(ArrayList<OrderLine> orderLines);
     }
 
     interface View extends BaseMvp.View{
@@ -31,7 +29,7 @@ public class CartMvp {
     interface Presenter extends BaseMvp.Presenter{
         void onLoad();
         void displayCart(HashMap<Long,OrderLine> cart);
-        void onCheckout();
+        void onCheckout(HashMap<Long, OrderLine> cart);
     }
 
 }

@@ -3,6 +3,7 @@ package jcl.com.gadgetshop.modules.checkout.shipping;
 import org.greenrobot.eventbus.EventBus;
 
 import jcl.com.gadgetshop.base.BasePresenter;
+import jcl.com.gadgetshop.data.dao.ShippingInfo;
 import jcl.com.gadgetshop.events.OnNextEvent;
 
 /**
@@ -29,7 +30,12 @@ public class ShippingPresenter extends BasePresenter implements ShippingMvp.Pres
     public void next() {
         if (view.getFullname().isEmpty() || view.getAddress().isEmpty() || view.getContactNumber().isEmpty())
             view.showToast("Please complete all required fields!");
-        else
-            EventBus.getDefault().postSticky(new OnNextEvent());
+        else{
+            ShippingInfo shippingInfo = new ShippingInfo();
+            shippingInfo.setShipTo(view.getFullname());
+            shippingInfo.setAddress(view.getAddress());
+            shippingInfo.setContactNo(view.getContactNumber());
+            interactor.postShippingInfo(shippingInfo);
+        }
     }
 }

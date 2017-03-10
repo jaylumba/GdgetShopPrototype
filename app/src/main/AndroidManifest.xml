@@ -30,11 +30,19 @@
         </activity>
         <activity
             android:name=".modules.home.HomeActivity"
-            android:label="@string/title_activity_home"
             android:screenOrientation="sensorPortrait" />
-        <activity android:name=".modules.productdetail.ProductDetailActivity" />
-        <activity android:name=".modules.cart.CartActivity" />
-        <activity android:name=".modules.checkout.CheckoutActivity"></activity>
+        <activity
+            android:name=".modules.productdetail.ProductDetailActivity"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".modules.cart.CartActivity"
+            android:screenOrientation="sensorPortrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".modules.checkout.CheckoutActivity"
+            android:screenOrientation="sensorPortrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".modules.successpage.SuccessActivity"></activity>
     </application>
 
 </manifest>

@@ -1,9 +1,14 @@
 package jcl.com.gadgetshop.modules.cart;
 
+import org.greenrobot.eventbus.EventBus;
+
+import java.util.ArrayList;
+
 import jcl.com.gadgetshop.data.DataManager;
 import jcl.com.gadgetshop.data.dao.OrderLine;
 import jcl.com.gadgetshop.data.dao.Product;
 import jcl.com.gadgetshop.data.local.SharedPrefHelper;
+import jcl.com.gadgetshop.events.PostCartToCheckoutEvent;
 
 /**
  * Created by jayanthony.lumba on 3/9/2017.
@@ -17,18 +22,9 @@ public class CartInteractor implements CartMvp.Interactor {
         this.presenter = presenter;
     }
 
-    @Override
-    public void increaseQty(Product product) {
-
-    }
 
     @Override
-    public void decreaseQty(Product product) {
-
-    }
-
-    @Override
-    public void removeOrderLine(OrderLine orderLine) {
-
+    public void postCartToCheckout(ArrayList<OrderLine> orderLines) {
+        EventBus.getDefault().postSticky(new PostCartToCheckoutEvent(orderLines));
     }
 }

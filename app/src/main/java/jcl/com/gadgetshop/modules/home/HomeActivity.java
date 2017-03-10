@@ -36,6 +36,8 @@ import jcl.com.gadgetshop.enums.PRODUCT_CATEGORY;
 import jcl.com.gadgetshop.events.LoginSuccessEvent;
 import jcl.com.gadgetshop.events.AddProductToCartEvent;
 import jcl.com.gadgetshop.events.PostCartEvent;
+import jcl.com.gadgetshop.events.PostClearHomeEvent;
+import jcl.com.gadgetshop.events.PostFinishCartEvent;
 import jcl.com.gadgetshop.events.RemoveProductToCartEvent;
 import jcl.com.gadgetshop.modules.cart.CartActivity;
 import jcl.com.gadgetshop.modules.login.LoginActivity;
@@ -214,6 +216,13 @@ public class HomeActivity extends BaseActivity implements HomeMvp.View{
     public void onRemoveProduct(RemoveProductToCartEvent removeProductToCartEvent){
         EventBus.getDefault().removeStickyEvent(removeProductToCartEvent);
         presenter.removeProductToCart(removeProductToCartEvent.getOrderLine());
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void onReceiveClearHomeEvent(PostClearHomeEvent event) {
+        EventBus.getDefault().removeStickyEvent(event);
+        cart = new HashMap<>();
+        invalidateOptionsMenu();
     }
 
     public static void setBadgeCount(Context context, LayerDrawable icon, String count) {

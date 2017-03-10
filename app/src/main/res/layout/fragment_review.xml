@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:descendantFocusability="blocksDescendants">
+
+    <ScrollView
+        android:id="@+id/sv_review"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/llt_buttonContainer"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_base2x">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="@dimen/spacing_base_half"
+                    android:text="Subtotal:"
+                    android:textSize="@dimen/fontsize_body1" />
+
+                <TextView
+                    android:id="@+id/tv_sub_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_base_half"
+                    android:textSize="@dimen/fontsize_body1"
+                    tools:text="&#8369; 19,000.00" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="@dimen/spacing_base_half"
+                    android:text="Shipping fee:"
+                    android:textSize="@dimen/fontsize_body1" />
+
+                <TextView
+                    android:id="@+id/tv_shipping_fee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_base_half"
+                    android:textSize="@dimen/fontsize_body1"
+                    tools:text="&#8369; 300.00" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    fontPath="fonts/Montserrat-Regular.otf"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="@dimen/spacing_base_half"
+                    android:text="Total:"
+                    android:textSize="@dimen/fontsize_subheading"
+                    tools:ignore="MissingPrefix" />
+
+                <TextView
+                    android:id="@+id/tv_total"
+                    fontPath="fonts/Montserrat-Bold.otf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_base_half"
+                    android:textSize="@dimen/fontsize_subheading"
+                    tools:ignore="MissingPrefix"
+                    tools:text="&#8369; 21,000.00" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginBottom="@dimen/spacing_base"
+                android:layout_marginTop="@dimen/spacing_base"
+                android:background="@color/colorRecyclerBg" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_base_half"
+                android:text="Shipping Details"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/fontsize_body1" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_base_half"
+                android:textSize="@dimen/fontsize_body1"
+                tools:text="Jay Lumba" />
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_base_half"
+                android:textSize="@dimen/fontsize_body1"
+                tools:text="Quezon City" />
+
+            <TextView
+                android:id="@+id/tv_contact_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_base_half"
+                android:textSize="@dimen/fontsize_body1"
+                tools:text="09771234567" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginBottom="@dimen/spacing_base"
+                android:layout_marginTop="@dimen/spacing_base"
+                android:background="@color/colorRecyclerBg" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_base_half"
+                android:text="Items"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/fontsize_body1" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_items"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/llt_buttonContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_back"
+            style="@style/AppTheme.ButtonStyle.Dark.Flat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="BACK" />
+
+        <Button
+            android:id="@+id/btn_continue"
+            style="@style/AppTheme.ButtonStyle.Light.Flat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_weight="1"
+            android:text="PLACE ORDER" />
+    </LinearLayout>
+</RelativeLayout>
